@@ -1,0 +1,223 @@
+{
+  "@@locale": "en",
+  "appName": "Milkly",
+  "@appName": {
+    "description": "The application name"
+  },
+  "appTagline": "Breastfeeding tracking made simple",
+  "@appTagline": {
+    "description": "Application tagline"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home tab label"
+  },
+  "plan": "Plan",
+  "@plan": {
+    "description": "Plan tab label"
+  },
+  "growth": "Growth",
+  "@growth": {
+    "description": "Growth tab label"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings tab label"
+  },
+  "welcomeToMilkly": "Welcome to Milkly",
+  "@welcomeToMilkly": {
+    "description": "Welcome message in onboarding"
+  },
+  "onboardingSubtitle": "Let's set up your breastfeeding plan together",
+  "@onboardingSubtitle": {
+    "description": "Onboarding subtitle"
+  },
+  "getStarted": "Get Started",
+  "@getStarted": {
+    "description": "Get started button"
+  },
+  "dashboardTimerPlaceholder": "Dashboard & feeding timer will go here",
+  "@dashboardTimerPlaceholder": {
+    "description": "Home page placeholder text"
+  },
+  "planSchedulePlaceholder": "Feeding plan & schedule will go here",
+  "@planSchedulePlaceholder": {
+    "description": "Plan page placeholder text"
+  },
+  "growthTrackingPlaceholder": "Baby growth tracking will go here",
+  "@growthTrackingPlaceholder": {
+    "description": "Growth page placeholder text"
+  },
+  "settingsPreferencesPlaceholder": "App settings & preferences will go here",
+  "@settingsPreferencesPlaceholder": {
+    "description": "Settings page placeholder text"
+  },
+  "chatbotPlaceholder": "(Guided chatbot flow will go here)",
+  "@chatbotPlaceholder": {
+    "description": "Onboarding chatbot placeholder"
+  },
+  
+    "bfOnboarding_questionnaire_step_childProfile_title": "Baby details",
+    "bfOnboarding_questionnaire_step_feedingStatus_title": "Current feeding situation",
+    "bfOnboarding_questionnaire_step_pediatricPlan_title": "Pediatrician’s plan",
+    "bfOnboarding_questionnaire_step_feedTimersAndBreast_title": "Feed timers and breast side",
+    "bfOnboarding_questionnaire_step_pumping_title": "Pumping",
+    "bfOnboarding_questionnaire_step_night_title": "Night-time management",
+    "bfOnboarding_questionnaire_step_otherChildren_title": "Other children",
+  
+    "bfOnboarding_questionnaire_childName_title": "What is your baby’s name?",
+    "bfOnboarding_questionnaire_childBirthDate_title": "What is your baby’s date of birth?",
+    "bfOnboarding_questionnaire_childSex_title": "What is your baby’s sex?",
+    "bfOnboarding_questionnaire_childSex_option_male": "Male",
+    "bfOnboarding_questionnaire_childSex_option_female": "Female",
+    "bfOnboarding_questionnaire_childSex_option_other": "Other / prefer not to specify",
+  
+    "bfOnboarding_questionnaire_childrenInThisBirth_title": "How many babies are you following from this birth?",
+    "bfOnboarding_questionnaire_childrenInThisBirth_option_one": "One",
+    "bfOnboarding_questionnaire_childrenInThisBirth_option_twins": "Twins",
+    "bfOnboarding_questionnaire_childrenInThisBirth_option_moreThanTwo": "More than two",
+  
+    "bfOnboarding_questionnaire_currentFeedingMode_title": "How are you currently feeding {childName}?",
+    "@bfOnboarding_questionnaire_currentFeedingMode_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_currentFeedingMode_option_breastOnly": "Only at the breast",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped": "Breast + pumped breast milk (bottle)",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula": "Breast + formula",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_pumpedOnly": "Only pumped breast milk (no direct latch)",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_formulaOnly": "Only formula",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_other": "Other",
+  
+    "bfOnboarding_questionnaire_avgFeedsPerDay_title": "On average, how many feeds does {childName} have in 24 hours?",
+    "@bfOnboarding_questionnaire_avgFeedsPerDay_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+  
+    "bfOnboarding_questionnaire_bottleUsage_title": "Are you currently using a bottle with {childName}?",
+    "@bfOnboarding_questionnaire_bottleUsage_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_bottleUsage_option_never": "No, never",
+    "bfOnboarding_questionnaire_bottleUsage_option_sometimes": "Yes, sometimes",
+    "bfOnboarding_questionnaire_bottleUsage_option_regular": "Yes, regularly (at least 1–2 times a day)",
+  
+    "bfOnboarding_questionnaire_pediatricFeedingMode_title": "How did your pediatrician recommend feeding {childName}?",
+    "@bfOnboarding_questionnaire_pediatricFeedingMode_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_onDemand": "On demand (whenever the baby asks)",
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_intervals": "At more or less regular intervals",
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_mixed": "A combination of the two",
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_notDefined": "It has not been defined in detail",
+  
+    "bfOnboarding_questionnaire_dayIntervalDescription_title": "Roughly how far apart should daytime feeds be?",
+    "bfOnboarding_questionnaire_dayIntervalDescription_note": "For example: every 2–3 hours",
+  
+    "bfOnboarding_questionnaire_nightIntervalType_title": "And at night, did the pediatrician give you a reference interval?",
+    "bfOnboarding_questionnaire_nightIntervalType_option_sameAsDay": "Same interval as during the day",
+    "bfOnboarding_questionnaire_nightIntervalType_option_different": "Different interval (max X hours)",
+    "bfOnboarding_questionnaire_nightIntervalType_option_notDefined": "No specific interval was defined",
+  
+    "bfOnboarding_questionnaire_nightMaxIntervalHours_title": "What is the maximum night-time interval (in hours)?",
+  
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_title": "Did the pediatrician give you a maximum number of hours between feeds that should not be exceeded?",
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_yes": "Yes, a maximum number of hours",
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_no": "No",
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow": "I don’t remember",
+  
+    "bfOnboarding_questionnaire_maxIntervalAnytimeHours_title": "What is the maximum number of hours between feeds?",
+  
+    "bfOnboarding_questionnaire_trackLastBreast_title": "Would you like to track which breast you last used to feed {childName}?",
+    "@bfOnboarding_questionnaire_trackLastBreast_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_trackLastBreast_option_yes": "Yes, that would be helpful",
+    "bfOnboarding_questionnaire_trackLastBreast_option_no": "No, it’s not necessary",
+  
+    "bfOnboarding_questionnaire_breastPattern_title": "How do you usually manage breasts during a feed?",
+    "bfOnboarding_questionnaire_breastPattern_option_onePerFeed": "One breast per feed",
+    "bfOnboarding_questionnaire_breastPattern_option_bothPerFeed": "Both breasts in the same feed",
+    "bfOnboarding_questionnaire_breastPattern_option_depends": "It depends, I don’t have a fixed pattern",
+  
+    "bfOnboarding_questionnaire_feedTimerUsage_title": "Would you like to use a timer to measure feed duration?",
+    "bfOnboarding_questionnaire_feedTimerUsage_option_fullTimer": "Yes, with a start/stop stopwatch",
+    "bfOnboarding_questionnaire_feedTimerUsage_option_approx": "Yes, but an approximate indication is enough",
+    "bfOnboarding_questionnaire_feedTimerUsage_option_no": "No, I don’t need it",
+  
+    "bfOnboarding_questionnaire_nextFeedReminder_title": "Would you like the app to remind you when the next feed is approaching, based on the pediatrician’s indications?",
+    "bfOnboarding_questionnaire_nextFeedReminder_option_before": "Yes, a few minutes before",
+    "bfOnboarding_questionnaire_nextFeedReminder_option_onTime": "Yes, at the estimated time",
+    "bfOnboarding_questionnaire_nextFeedReminder_option_no": "No, I prefer to just see the history",
+  
+    "bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_title": "Has your pediatrician (or consultant) given you specific times of day to pump?",
+    "bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes": "Yes",
+    "bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no": "No, only when I can",
+  
+    "bfOnboarding_questionnaire_pumpingTimes_title": "At what times of day should you pump?",
+    "bfOnboarding_questionnaire_pumpingTimes_option_morning": "Morning (e.g. around HH:MM)",
+    "bfOnboarding_questionnaire_pumpingTimes_option_afternoon": "Afternoon (e.g. around HH:MM)",
+    "bfOnboarding_questionnaire_pumpingTimes_option_eveningNight": "Evening/night (e.g. around HH:MM)",
+    "bfOnboarding_questionnaire_pumpingTimes_option_other": "Other (specify in the notes)",
+  
+    "bfOnboarding_questionnaire_pumpingTimesNotes_title": "If you like, specify approximate times to pump (e.g. 7:00, 13:00, 21:00).",
+  
+    "bfOnboarding_questionnaire_pumpingReminders_title": "Would you like the app to remind you of these pumping times?",
+    "bfOnboarding_questionnaire_pumpingReminders_option_onTime": "Yes, with a notification at the specified time",
+    "bfOnboarding_questionnaire_pumpingReminders_option_before": "Yes, with a reminder shortly before",
+    "bfOnboarding_questionnaire_pumpingReminders_option_no": "No, it’s not necessary",
+  
+    "bfOnboarding_questionnaire_trackPumpedAmount_title": "Would you like to record the amount of milk you pump (in ml)?",
+    "bfOnboarding_questionnaire_trackPumpedAmount_option_yes": "Yes",
+    "bfOnboarding_questionnaire_trackPumpedAmount_option_no": "No",
+  
+    "bfOnboarding_questionnaire_nightNotifications_title": "Would you like to receive reminders during the night?",
+    "bfOnboarding_questionnaire_nightNotifications_option_yes": "Yes, if it helps follow the pediatrician’s plan",
+    "bfOnboarding_questionnaire_nightNotifications_option_onlyIfExceeds": "Only if the maximum agreed interval is exceeded",
+    "bfOnboarding_questionnaire_nightNotifications_option_no": "No, I don’t want notifications at night",
+  
+    "bfOnboarding_questionnaire_nightIntervalOverrideHours_title": "Would you like to set a specific maximum interval at night (in hours)?",
+  
+    "bfOnboarding_questionnaire_configureOtherChildren_title": "Would you like to apply these settings to another child?",
+    "bfOnboarding_questionnaire_configureOtherChildren_option_twin": "Yes, for another twin from the same birth",
+    "bfOnboarding_questionnaire_configureOtherChildren_option_otherChild": "Yes, for another child",
+    "bfOnboarding_questionnaire_configureOtherChildren_option_no": "No, only for {childName}",
+    "@bfOnboarding_questionnaire_configureOtherChildren_option_no": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+  
+    "bfOnboarding_questionnaire_copySettingsForOtherChild_title": "For the new child, would you like to copy {childName}’s settings and edit them, or start from scratch?",
+    "@bfOnboarding_questionnaire_copySettingsForOtherChild_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_copySettingsForOtherChild_option_copy": "Copy the settings and then I’ll edit them",
+    "bfOnboarding_questionnaire_copySettingsForOtherChild_option_new": "Start from scratch"  
+}
+

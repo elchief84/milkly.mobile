@@ -1,0 +1,181 @@
+{
+    "@@locale": "it",
+    "appName": "Milkly",
+    "appTagline": "Tracciamento dell'allattamento semplificato",
+    "home": "Home",
+    "plan": "Piano",
+    "growth": "Crescita",
+    "settings": "Impostazioni",
+    "welcomeToMilkly": "Benvenuto in Milkly",
+    "onboardingSubtitle": "Configuriamo insieme il tuo piano di allattamento",
+    "getStarted": "Inizia",
+    "dashboardTimerPlaceholder": "Dashboard e timer di allattamento andranno qui",
+    "planSchedulePlaceholder": "Piano e programmazione allattamento andranno qui",
+    "growthTrackingPlaceholder": "Tracciamento crescita del bambino andrà qui",
+    "settingsPreferencesPlaceholder": "Impostazioni e preferenze dell'app andranno qui",
+    "chatbotPlaceholder": "(Il flusso guidato del chatbot andrà qui)",
+  
+    "bfOnboarding_questionnaire_step_childProfile_title": "Dati del bambino",
+    "bfOnboarding_questionnaire_step_feedingStatus_title": "Situazione attuale di alimentazione",
+    "bfOnboarding_questionnaire_step_pediatricPlan_title": "Indicazioni del pediatra",
+    "bfOnboarding_questionnaire_step_feedTimersAndBreast_title": "Timer poppate e lato del seno",
+    "bfOnboarding_questionnaire_step_pumping_title": "Tiralatte",
+    "bfOnboarding_questionnaire_step_night_title": "Gestione della notte",
+    "bfOnboarding_questionnaire_step_otherChildren_title": "Altri bambini",
+  
+    "bfOnboarding_questionnaire_childName_title": "Come si chiama il tuo bambino?",
+    "bfOnboarding_questionnaire_childBirthDate_title": "Qual è la sua data di nascita?",
+    "bfOnboarding_questionnaire_childSex_title": "Qual è il suo sesso?",
+    "bfOnboarding_questionnaire_childSex_option_male": "Maschio",
+    "bfOnboarding_questionnaire_childSex_option_female": "Femmina",
+    "bfOnboarding_questionnaire_childSex_option_other": "Altro / non voglio specificare",
+  
+    "bfOnboarding_questionnaire_childrenInThisBirth_title": "Quanti bambini stai seguendo con questo parto?",
+    "bfOnboarding_questionnaire_childrenInThisBirth_option_one": "Uno",
+    "bfOnboarding_questionnaire_childrenInThisBirth_option_twins": "Gemelli",
+    "bfOnboarding_questionnaire_childrenInThisBirth_option_moreThanTwo": "Più di due",
+  
+    "bfOnboarding_questionnaire_currentFeedingMode_title": "In questo momento come stai nutrendo {childName}?",
+    "@bfOnboarding_questionnaire_currentFeedingMode_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_currentFeedingMode_option_breastOnly": "Solo al seno",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped": "Seno + latte materno tirato (biberon)",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula": "Seno + latte artificiale (formula)",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_pumpedOnly": "Solo latte materno tirato (no attacco al seno)",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_formulaOnly": "Solo latte artificiale",
+    "bfOnboarding_questionnaire_currentFeedingMode_option_other": "Altro",
+  
+    "bfOnboarding_questionnaire_avgFeedsPerDay_title": "In media quante poppate fa {childName} in 24 ore?",
+    "@bfOnboarding_questionnaire_avgFeedsPerDay_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+  
+    "bfOnboarding_questionnaire_bottleUsage_title": "Al momento usi già il biberon con {childName}?",
+    "@bfOnboarding_questionnaire_bottleUsage_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_bottleUsage_option_never": "No, mai",
+    "bfOnboarding_questionnaire_bottleUsage_option_sometimes": "Sì, ogni tanto",
+    "bfOnboarding_questionnaire_bottleUsage_option_regular": "Sì, regolarmente (almeno 1–2 volte al giorno)",
+  
+    "bfOnboarding_questionnaire_pediatricFeedingMode_title": "Il tuo pediatra ti ha consigliato di allattare {childName}…",
+    "@bfOnboarding_questionnaire_pediatricFeedingMode_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_onDemand": "A richiesta (quando il bambino lo chiede)",
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_intervals": "A intervalli più o meno regolari",
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_mixed": "Una combinazione delle due",
+    "bfOnboarding_questionnaire_pediatricFeedingMode_option_notDefined": "Non è stato definito in dettaglio",
+  
+    "bfOnboarding_questionnaire_dayIntervalDescription_title": "Ogni quanto circa dovrebbero essere distanziate le poppate di giorno?",
+    "bfOnboarding_questionnaire_dayIntervalDescription_note": "Ad esempio: ogni 2–3 ore",
+  
+    "bfOnboarding_questionnaire_nightIntervalType_title": "E di notte, il pediatra ti ha dato un intervallo indicativo?",
+    "bfOnboarding_questionnaire_nightIntervalType_option_sameAsDay": "Stesso intervallo del giorno",
+    "bfOnboarding_questionnaire_nightIntervalType_option_different": "Intervallo diverso (max X ore)",
+    "bfOnboarding_questionnaire_nightIntervalType_option_notDefined": "Non è stato definito un intervallo specifico",
+  
+    "bfOnboarding_questionnaire_nightMaxIntervalHours_title": "Qual è l’intervallo massimo notturno (in ore)?",
+  
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_title": "Il pediatra ti ha indicato un numero massimo di ore da non superare tra una poppata e l’altra?",
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_yes": "Sì, un numero massimo di ore",
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_no": "No",
+    "bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow": "Non ricordo",
+  
+    "bfOnboarding_questionnaire_maxIntervalAnytimeHours_title": "Quante ore al massimo tra una poppata e l’altra?",
+  
+    "bfOnboarding_questionnaire_trackLastBreast_title": "Vuoi tenere traccia da che lato hai allattato {childName} per ultimo?",
+    "@bfOnboarding_questionnaire_trackLastBreast_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_trackLastBreast_option_yes": "Sì, mi sarebbe utile",
+    "bfOnboarding_questionnaire_trackLastBreast_option_no": "No, non è necessario",
+  
+    "bfOnboarding_questionnaire_breastPattern_title": "Di solito come preferisci gestire i seni durante la poppata?",
+    "bfOnboarding_questionnaire_breastPattern_option_onePerFeed": "Un solo seno per poppata",
+    "bfOnboarding_questionnaire_breastPattern_option_bothPerFeed": "Entrambi i seni nella stessa poppata",
+    "bfOnboarding_questionnaire_breastPattern_option_depends": "Dipende, non ho uno schema fisso",
+  
+    "bfOnboarding_questionnaire_feedTimerUsage_title": "Vuoi usare un timer per misurare la durata delle poppate?",
+    "bfOnboarding_questionnaire_feedTimerUsage_option_fullTimer": "Sì, con cronometro avvio/stop",
+    "bfOnboarding_questionnaire_feedTimerUsage_option_approx": "Sì, ma mi basta un’indicazione approssimativa",
+    "bfOnboarding_questionnaire_feedTimerUsage_option_no": "No, non mi serve",
+  
+    "bfOnboarding_questionnaire_nextFeedReminder_title": "Vuoi che l’app ti avvisi quando si avvicina il momento della prossima poppata, in base alle indicazioni del pediatra?",
+    "bfOnboarding_questionnaire_nextFeedReminder_option_before": "Sì, qualche minuto prima",
+    "bfOnboarding_questionnaire_nextFeedReminder_option_onTime": "Sì, all’orario stimato",
+    "bfOnboarding_questionnaire_nextFeedReminder_option_no": "No, preferisco solo vedere lo storico",
+  
+    "bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_title": "Il tuo pediatra (o consulente) ti ha indicato momenti specifici della giornata in cui tirare il latte?",
+    "bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes": "Sì",
+    "bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no": "No, solo quando riesco",
+  
+    "bfOnboarding_questionnaire_pumpingTimes_title": "In quali momenti della giornata dovresti tirare il latte?",
+    "bfOnboarding_questionnaire_pumpingTimes_option_morning": "Mattina (es. verso le HH:MM)",
+    "bfOnboarding_questionnaire_pumpingTimes_option_afternoon": "Pomeriggio (es. verso le HH:MM)",
+    "bfOnboarding_questionnaire_pumpingTimes_option_eveningNight": "Sera/notte (es. verso le HH:MM)",
+    "bfOnboarding_questionnaire_pumpingTimes_option_other": "Altro (specifica nelle note)",
+  
+    "bfOnboarding_questionnaire_pumpingTimesNotes_title": "Se vuoi, specifica orari indicativi per tirare il latte (es. 7:00, 13:00, 21:00).",
+  
+    "bfOnboarding_questionnaire_pumpingReminders_title": "Vuoi che l’app ti ricordi questi momenti per tirare il latte?",
+    "bfOnboarding_questionnaire_pumpingReminders_option_onTime": "Sì, con notifica all’orario indicato",
+    "bfOnboarding_questionnaire_pumpingReminders_option_before": "Sì, con un promemoria poco prima",
+    "bfOnboarding_questionnaire_pumpingReminders_option_no": "No, non è necessario",
+  
+    "bfOnboarding_questionnaire_trackPumpedAmount_title": "Ti interessa registrare la quantità di latte tirato (in ml)?",
+    "bfOnboarding_questionnaire_trackPumpedAmount_option_yes": "Sì",
+    "bfOnboarding_questionnaire_trackPumpedAmount_option_no": "No",
+  
+    "bfOnboarding_questionnaire_nightNotifications_title": "Vuoi ricevere promemoria anche durante la notte?",
+    "bfOnboarding_questionnaire_nightNotifications_option_yes": "Sì, se serve a seguire le indicazioni del pediatra",
+    "bfOnboarding_questionnaire_nightNotifications_option_onlyIfExceeds": "Solo se si supera l’intervallo massimo che avete stabilito",
+    "bfOnboarding_questionnaire_nightNotifications_option_no": "No, di notte non voglio notifiche",
+  
+    "bfOnboarding_questionnaire_nightIntervalOverrideHours_title": "Per la notte vuoi impostare un intervallo massimo specifico (in ore)?",
+  
+    "bfOnboarding_questionnaire_configureOtherChildren_title": "Vuoi impostare queste impostazioni anche per un altro bambino?",
+    "bfOnboarding_questionnaire_configureOtherChildren_option_twin": "Sì, per un altro gemello dello stesso parto",
+    "bfOnboarding_questionnaire_configureOtherChildren_option_otherChild": "Sì, per un altro bambino",
+    "bfOnboarding_questionnaire_configureOtherChildren_option_no": "No, solo per {childName}",
+    "@bfOnboarding_questionnaire_configureOtherChildren_option_no": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+  
+    "bfOnboarding_questionnaire_copySettingsForOtherChild_title": "Per il nuovo bambino preferisci copiare le impostazioni di {childName} e modificarle dopo, oppure ripartire da zero?",
+    "@bfOnboarding_questionnaire_copySettingsForOtherChild_title": {
+      "placeholders": {
+        "childName": {
+          "type": "String"
+        }
+      }
+    },
+    "bfOnboarding_questionnaire_copySettingsForOtherChild_option_copy": "Copia le impostazioni e poi modifico",
+    "bfOnboarding_questionnaire_copySettingsForOtherChild_option_new": "Ripartiamo da capo"
+}
+
