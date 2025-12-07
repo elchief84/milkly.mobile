@@ -43,4 +43,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-/actions-runner
+
+# GitHub Actions Self-Hosted Runner
+actions-runner/
+.runner/
+_diag/
+_work/
