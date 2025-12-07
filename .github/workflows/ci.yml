@@ -103,39 +103,40 @@ jobs:
           path: build/app/outputs/flutter-apk/app-debug.apk
           retention-days: 7
 
-  build-ios:
-    name: Build iOS (Self-hosted macOS)
-    runs-on: self-hosted  # Self-hosted runner on your Mac
-    timeout-minutes: 45
-    needs: analyze
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.24.0'
-          channel: 'stable'
-          cache: true
-          architecture: arm64
-      
-      - name: Install CocoaPods
-        run: |
-          cd ios
-          pod install
-      
-      - name: Get dependencies
-        run: flutter pub get
-      
-      - name: Build iOS (no codesign)
-        run: flutter build ios --release --no-codesign
-      
-      - name: Upload iOS build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-build
-          path: build/ios/iphoneos/Runner.app
-          retention-days: 7
+  # iOS build temporarily disabled - uncomment when self-hosted runner is ready
+  # build-ios:
+  #   name: Build iOS (Self-hosted macOS)
+  #   runs-on: self-hosted  # Self-hosted runner on your Mac
+  #   timeout-minutes: 45
+  #   needs: analyze
+  #   
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #     
+  #     - name: Setup Flutter
+  #       uses: subosito/flutter-action@v2
+  #       with:
+  #         flutter-version: '3.24.0'
+  #         channel: 'stable'
+  #         cache: true
+  #         architecture: arm64
+  #     
+  #     - name: Install CocoaPods
+  #       run: |
+  #         cd ios
+  #         pod install
+  #     
+  #     - name: Get dependencies
+  #       run: flutter pub get
+  #     
+  #     - name: Build iOS (no codesign)
+  #       run: flutter build ios --release --no-codesign
+  #     
+  #     - name: Upload iOS build artifact
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: ios-build
+  #         path: build/ios/iphoneos/Runner.app
+  #         retention-days: 7
 
