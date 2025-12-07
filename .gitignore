@@ -49,3 +49,7 @@ actions-runner/
 .runner/
 _diag/
 _work/
+
+# CI Testing Files
+Dockerfile.ci-test
+scripts/test-ci-locally.sh
