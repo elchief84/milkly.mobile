@@ -63,8 +63,6 @@ class _OnboardingContentState extends State<_OnboardingContent> {
     return Scaffold(
       backgroundColor: context.colorScheme.surface,
       body: SafeArea(
-        bottom: false,
-        maintainBottomViewPadding: true,
         child: BlocConsumer<OnboardingBloc, OnboardingState>(
           listener: (context, state) {
             // Auto-scroll when state changes to show new question or completion
@@ -155,6 +153,9 @@ class _OnboardingContentState extends State<_OnboardingContent> {
     return Container(
       color: context.colorScheme.surface,
       child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildProgressBar(context, state),
           Expanded(

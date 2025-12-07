@@ -90,41 +90,44 @@ class UserMessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 60, right: 16, top: 8, bottom: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          const Text(
-            'Tu',
-            style: TextStyle(
-              fontSize: 12,
-              color: ChatTheme.textSecondary,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: ChatTheme.getPrimaryColor(isFemale: isFemale),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(3),
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 60, right: 16, top: 8, bottom: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            const Text(
+              'Tu',
+              style: TextStyle(
+                fontSize: 12,
+                color: ChatTheme.textSecondary,
+                fontWeight: FontWeight.w500,
               ),
             ),
-            child: Text(
-              message,
-              style: const TextStyle(
-                fontSize: 16,
-                color: ChatTheme.white,
-                height: 1.5,
+            const SizedBox(height: 4),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: ChatTheme.getPrimaryColor(isFemale: isFemale),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(3),
+                ),
+              ),
+              child: Text(
+                message,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: ChatTheme.white,
+                  height: 1.5,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
