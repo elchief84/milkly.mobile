@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +31,10 @@ class _MilklyAppState extends State<MilklyApp> {
     final hasCompletedOnboarding =
         prefs.getBool(AppConstants.keyOnboardingCompleted) ?? false;
 
-    return createAppRouter(showOnboarding: !hasCompletedOnboarding);
+    // In debug mode, always show onboarding
+    final showOnboarding = kDebugMode || !hasCompletedOnboarding;
+
+    return createAppRouter(showOnboarding: showOnboarding);
   }
 
   @override

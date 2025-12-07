@@ -1,0 +1,286 @@
+{
+  "version": 1,
+  "flowId": "breastfeeding_onboarding_v1",
+  "steps": [
+    {
+      "id": "babyProfile",
+      "title": "Profilo del bambino",
+      "questions": [
+        {
+          "id": "childName",
+          "type": "text",
+          "title": "Ciao! Sono qui per aiutarti a creare un piano di allattamento personalizzato. Per iniziare, come si chiama il tuo bambino?",
+          "placeholder": "Es: Sofia",
+          "required": true
+        },
+        {
+          "id": "childBirthDate",
+          "type": "date",
+          "title": "Qual è la data di nascita di {childName}?",
+          "required": true
+        },
+        {
+          "id": "childSex",
+          "type": "single_choice",
+          "title": "Qual è il sesso di {childName}?",
+          "required": true,
+          "options": [
+            { "id": "female", "text": "Femmina" },
+            { "id": "male", "text": "Maschio" },
+            { "id": "other", "text": "Preferisco non specificare" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedingType",
+      "title": "Tipo di alimentazione",
+      "questions": [
+        {
+          "id": "feedingMode",
+          "type": "single_choice",
+          "title": "Che tipo di latte utilizzerai principalmente?",
+          "required": true,
+          "options": [
+            { "id": "breastOnly", "text": "Solo allattamento al seno" },
+            { "id": "breastAndPumpedBottle", "text": "Seno + latte materno tirato in biberon" },
+            { "id": "breastAndFormula", "text": "Seno + latte in formula in biberon" },
+            { "id": "pumpedAndFormula", "text": "Latte materno tirato + formula in biberon" },
+            { "id": "formulaOnly", "text": "Solo latte in formula in biberon" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "breastManagement",
+      "title": "Gestione del seno",
+      "questions": [
+        {
+          "id": "breastPerFeed",
+          "type": "single_choice",
+          "title": "Durante una poppata, preferisci dare:",
+          "required": true,
+          "options": [
+            { "id": "singleBreast", "text": "Un solo seno per poppata" },
+            { "id": "bothBreasts", "text": "Entrambi i seni nella stessa poppata" },
+            { "id": "varies", "text": "Varia, dipende dalla situazione" }
+          ],
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastOnly", "breastAndPumpedBottle", "breastAndFormula"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "planningMode",
+      "title": "Modalità di pianificazione",
+      "questions": [
+        {
+          "id": "planningType",
+          "type": "single_choice",
+          "title": "Come preferisci pianificare le poppate?",
+          "required": true,
+          "options": [
+            { "id": "hourlyIntervals", "text": "A intervalli orari (ogni tot ore)" },
+            { "id": "dailyCount", "text": "Per numero di poppate giornaliere" },
+            { "id": "onDemand", "text": "A richiesta (senza pianificazione rigida)" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hourlyIntervals",
+      "title": "Intervalli orari",
+      "questions": [
+        {
+          "id": "dayIntervalHours",
+          "type": "single_choice",
+          "title": "Ogni quante ore vuoi allattare di giorno?",
+          "placeholder": "Es: 3",
+          "required": true,
+          "options": [
+            { "id": "val_1", "text": "1 ora" },
+            { "id": "val_2", "text": "2 ore" },
+            { "id": "val_3", "text": "3 ore" },
+            { "id": "val_4", "text": "4 ore" },
+            { "id": "val_5", "text": "5 ore" },
+            { "id": "val_6", "text": "6 ore" },
+            { "id": "val_7", "text": "7 ore" },
+            { "id": "val_8", "text": "8 ore" }
+          ],
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "hourlyIntervals"
+          }
+        },
+        {
+          "id": "nightIntervalHours",
+          "type": "single_choice",
+          "title": "E di notte, ogni quante ore?",
+          "placeholder": "Es: 4",
+          "required": true,
+          "options": [
+            { "id": "val_0", "text": "Come di giorno" },
+            { "id": "val_1", "text": "1 ora" },
+            { "id": "val_2", "text": "2 ore" },
+            { "id": "val_3", "text": "3 ore" },
+            { "id": "val_4", "text": "4 ore" },
+            { "id": "val_5", "text": "5 ore" },
+            { "id": "val_6", "text": "6 ore" },
+            { "id": "val_7", "text": "7 ore" },
+            { "id": "val_8", "text": "8 ore" },
+            { "id": "val_9", "text": "9 ore" },
+            { "id": "val_10", "text": "10 ore" },
+            { "id": "val_11", "text": "11 ore" },
+            { "id": "val_12", "text": "12 ore" }
+          ],
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "hourlyIntervals"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dailyCount",
+      "title": "Numero poppate giornaliere",
+      "questions": [
+        {
+          "id": "totalDailyFeeds",
+          "type": "number",
+          "title": "Quante poppate vuoi fare in 24 ore?",
+          "placeholder": "Es: 8",
+          "required": true,
+          "min": 1,
+          "max": 20,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "dailyCount"
+          }
+        },
+        {
+          "id": "firstFeedOfDay",
+          "type": "time",
+          "title": "A che ora vuoi fare la prima poppata del giorno?",
+          "placeholder": "Es: 8:00",
+          "required": true,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "dailyCount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "maxIntervalsWithoutFeeding",
+      "title": "Intervalli massimi",
+      "questions": [
+        {
+          "id": "maxDayHoursWithoutFeed",
+          "type": "number",
+          "title": "Numero massimo di ore senza poppata durante il giorno?",
+          "placeholder": "Es: 3",
+          "required": false,
+          "min": 1,
+          "max": 8,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "in",
+            "value": ["hourlyIntervals", "dailyCount"]
+          }
+        },
+        {
+          "id": "maxNightHoursWithoutFeed",
+          "type": "number",
+          "title": "E durante la notte, numero massimo di ore senza poppata?",
+          "placeholder": "Es: 5",
+          "required": false,
+          "min": 1,
+          "max": 12,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "in",
+            "value": ["hourlyIntervals", "dailyCount"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pumpingSchedule",
+      "title": "Pianificazione tiralatte",
+      "questions": [
+        {
+          "id": "pumpingDayIntervalHours",
+          "type": "number",
+          "title": "Ogni quante ore vuoi tirare il latte durante il giorno?",
+          "placeholder": "Es: 3",
+          "required": true,
+          "min": 1,
+          "max": 8,
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastAndPumpedBottle", "pumpedAndFormula"]
+          }
+        },
+        {
+          "id": "pumpingNightIntervalHours",
+          "type": "number",
+          "title": "E durante la notte, ogni quante ore vuoi tirare?",
+          "placeholder": "Es: 6 (o lascia vuoto se non tiri di notte)",
+          "required": false,
+          "min": 1,
+          "max": 12,
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastAndPumpedBottle", "pumpedAndFormula"]
+          }
+        },
+        {
+          "id": "pumpingReminders",
+          "type": "single_choice",
+          "title": "Vuoi ricevere promemoria per il tiralatte?",
+          "required": true,
+          "options": [
+            { "id": "yes", "text": "Sì, avvisami quando è ora di tirare" },
+            { "id": "no", "text": "No, lo faccio quando posso" }
+          ],
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastAndPumpedBottle", "pumpedAndFormula"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "trackingPreferences",
+      "title": "Preferenze di tracciamento",
+      "questions": [
+        {
+          "id": "feedingReminders",
+          "type": "single_choice",
+          "title": "Vuoi ricevere promemoria per le poppate?",
+          "required": true,
+          "options": [
+            { "id": "yes", "text": "Sì, avvisami quando è ora di allattare" },
+            { "id": "onlyIfExceeds", "text": "Solo se supero l'intervallo massimo" },
+            { "id": "no", "text": "No, preferisco vedere solo lo storico" }
+          ],
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "in",
+            "value": ["hourlyIntervals", "dailyCount"]
+          }
+        }
+      ]
+    }
+  ]
+}
