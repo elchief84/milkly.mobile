@@ -1,3 +1,7 @@
+[![CI](https://github.com/elchief84/milkly.mobile/actions/workflows/ci.yml/badge.svg)](https://github.com/elchief84/milkly.mobile/actions/workflows/ci.yml)
+[![Code Quality](https://github.com/elchief84/milkly.mobile/actions/workflows/code-quality.yml/badge.svg)](https://github.com/elchief84/milkly.mobile/actions/workflows/code-quality.yml)
+[![Firebase App Distribution](https://github.com/elchief84/milkly.mobile/actions/workflows/firebase-distribution.yml/badge.svg)](https://github.com/elchief84/milkly.mobile/actions/workflows/firebase-distribution.yml)
+
 # Milkly
 
 Breastfeeding tracking utility for new parents.
