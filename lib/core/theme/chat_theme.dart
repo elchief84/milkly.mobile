@@ -18,7 +18,8 @@ class ChatTheme {
   static const Color white = Colors.white;
 
   static Color getPrimaryColor({required bool isFemale}) => femalePrimary;
-  static Color getPrimaryLightColor({required bool isFemale}) => femalePrimaryLight;
-  static Color getPrimaryPaleColor({required bool isFemale}) => femalePrimaryPale;
+  static Color getPrimaryLightColor({required bool isFemale}) =>
+      femalePrimaryLight;
+  static Color getPrimaryPaleColor({required bool isFemale}) =>
+      femalePrimaryPale;
 }
-

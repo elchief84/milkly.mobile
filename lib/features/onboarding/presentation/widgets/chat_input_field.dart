@@ -74,7 +74,10 @@ class _ChatInputFieldState extends State<ChatInputField> {
                 hintText: widget.placeholder,
                 border: InputBorder.none,
                 isDense: true,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 8,
+                ),
               ),
               onSubmitted: (_) => _handleSend(),
             ),
@@ -82,7 +85,9 @@ class _ChatInputFieldState extends State<ChatInputField> {
           IconButton(
             icon: Icon(
               Icons.send,
-              color: _hasText && widget.enabled ? ChatTheme.femalePrimary : ChatTheme.textHint,
+              color: _hasText && widget.enabled
+                  ? ChatTheme.femalePrimary
+                  : ChatTheme.textHint,
             ),
             onPressed: _hasText && widget.enabled ? _handleSend : null,
             padding: EdgeInsets.zero,
@@ -93,4 +98,3 @@ class _ChatInputFieldState extends State<ChatInputField> {
     );
   }
 }
-

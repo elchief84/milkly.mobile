@@ -7,9 +7,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
+      appBar: AppBar(title: const Text('Settings')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -20,10 +18,7 @@ class SettingsPage extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
             ),
             const SizedBox(height: 24),
-            Text(
-              'Settings',
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
+            Text('Settings', style: Theme.of(context).textTheme.displaySmall),
             const SizedBox(height: 12),
             Text(
               'App settings & preferences will go here',
@@ -35,4 +30,3 @@ class SettingsPage extends StatelessWidget {
     );
   }
 }
-

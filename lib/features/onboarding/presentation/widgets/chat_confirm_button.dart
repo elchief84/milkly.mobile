@@ -26,15 +26,24 @@ class ChatConfirmButton extends StatelessWidget {
             foregroundColor: ChatTheme.white,
             disabledBackgroundColor: ChatTheme.textHint,
             padding: const EdgeInsets.symmetric(vertical: 14),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
             elevation: 2,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Conferma', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+              const Text(
+                'Conferma',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+              ),
               const SizedBox(width: 8),
-              Icon(Icons.arrow_forward, size: 18, color: enabled ? ChatTheme.white : ChatTheme.textHint),
+              Icon(
+                Icons.arrow_forward,
+                size: 18,
+                color: enabled ? ChatTheme.white : ChatTheme.textHint,
+              ),
             ],
           ),
         ),
@@ -42,4 +51,3 @@ class ChatConfirmButton extends StatelessWidget {
     );
   }
 }
-

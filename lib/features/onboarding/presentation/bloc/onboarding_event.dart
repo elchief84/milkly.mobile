@@ -18,10 +18,7 @@ class AnswerQuestion extends OnboardingEvent {
   final String questionId;
   final dynamic answer;
 
-  const AnswerQuestion({
-    required this.questionId,
-    required this.answer,
-  });
+  const AnswerQuestion({required this.questionId, required this.answer});
 
   @override
   List<Object?> get props => [questionId, answer];
@@ -41,4 +38,3 @@ class PreviousQuestion extends OnboardingEvent {
 class CompleteOnboarding extends OnboardingEvent {
   const CompleteOnboarding();
 }
-

@@ -11,4 +11,3 @@ extension ThemeExtension on BuildContext {
   /// Access the full Theme
   ThemeData get theme => Theme.of(this);
 }
-

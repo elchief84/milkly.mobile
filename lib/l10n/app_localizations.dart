@@ -63,7 +63,7 @@ import 'app_localizations_it.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -86,16 +86,16 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('it')
+    Locale('it'),
   ];
 
   /// The application name
@@ -301,14 +301,14 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Breast + pumped breast milk (bottle)'**
   String
-      get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped;
+  get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped;
 
   /// No description provided for @bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula.
   ///
   /// In en, this message translates to:
   /// **'Breast + formula'**
   String
-      get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula;
+  get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula;
 
   /// No description provided for @bfOnboarding_questionnaire_currentFeedingMode_option_pumpedOnly.
   ///
@@ -363,7 +363,8 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'How did your pediatrician recommend feeding {childName}?'**
   String bfOnboarding_questionnaire_pediatricFeedingMode_title(
-      String childName);
+    String childName,
+  );
 
   /// No description provided for @bfOnboarding_questionnaire_pediatricFeedingMode_option_onDemand.
   ///
@@ -454,7 +455,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'I don’t remember'**
   String
-      get bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow;
+  get bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow;
 
   /// No description provided for @bfOnboarding_questionnaire_maxIntervalAnytimeHours_title.
   ///
@@ -563,14 +564,14 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Yes'**
   String
-      get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes;
+  get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes;
 
   /// No description provided for @bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no.
   ///
   /// In en, this message translates to:
   /// **'No, only when I can'**
   String
-      get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no;
+  get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no;
 
   /// No description provided for @bfOnboarding_questionnaire_pumpingTimes_title.
   ///
@@ -697,21 +698,23 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Yes, for another child'**
   String
-      get bfOnboarding_questionnaire_configureOtherChildren_option_otherChild;
+  get bfOnboarding_questionnaire_configureOtherChildren_option_otherChild;
 
   /// No description provided for @bfOnboarding_questionnaire_configureOtherChildren_option_no.
   ///
   /// In en, this message translates to:
   /// **'No, only for {childName}'**
   String bfOnboarding_questionnaire_configureOtherChildren_option_no(
-      String childName);
+    String childName,
+  );
 
   /// No description provided for @bfOnboarding_questionnaire_copySettingsForOtherChild_title.
   ///
   /// In en, this message translates to:
   /// **'For the new child, would you like to copy {childName}’s settings and edit them, or start from scratch?'**
   String bfOnboarding_questionnaire_copySettingsForOtherChild_title(
-      String childName);
+    String childName,
+  );
 
   /// No description provided for @bfOnboarding_questionnaire_copySettingsForOtherChild_option_copy.
   ///
@@ -753,8 +756,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }

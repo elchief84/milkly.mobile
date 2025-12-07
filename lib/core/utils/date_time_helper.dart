@@ -51,4 +51,3 @@ class DateTimeHelper {
     return DateTime(dateTime.year, dateTime.month, dateTime.day, 23, 59, 59);
   }
 }
-

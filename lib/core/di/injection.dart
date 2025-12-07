@@ -17,4 +17,3 @@ Future<void> configureDependencies() async {
   // Future: Register Drift database, repositories, use cases, blocs, etc.
   // This will be populated as we add features
 }
-

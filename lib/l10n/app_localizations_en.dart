@@ -115,8 +115,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String
-      get bfOnboarding_questionnaire_childrenInThisBirth_option_moreThanTwo =>
-          'More than two';
+  get bfOnboarding_questionnaire_childrenInThisBirth_option_moreThanTwo =>
+      'More than two';
 
   @override
   String bfOnboarding_questionnaire_currentFeedingMode_title(String childName) {
@@ -129,13 +129,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String
-      get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped =>
-          'Breast + pumped breast milk (bottle)';
+  get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped =>
+      'Breast + pumped breast milk (bottle)';
 
   @override
   String
-      get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula =>
-          'Breast + formula';
+  get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula =>
+      'Breast + formula';
 
   @override
   String get bfOnboarding_questionnaire_currentFeedingMode_option_pumpedOnly =>
@@ -172,7 +172,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String bfOnboarding_questionnaire_pediatricFeedingMode_title(
-      String childName) {
+    String childName,
+  ) {
     return 'How did your pediatrician recommend feeding $childName?';
   }
 
@@ -190,8 +191,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String
-      get bfOnboarding_questionnaire_pediatricFeedingMode_option_notDefined =>
-          'It has not been defined in detail';
+  get bfOnboarding_questionnaire_pediatricFeedingMode_option_notDefined =>
+      'It has not been defined in detail';
 
   @override
   String get bfOnboarding_questionnaire_dayIntervalDescription_title =>
@@ -235,8 +236,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String
-      get bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow =>
-          'I don’t remember';
+  get bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow =>
+      'I don’t remember';
 
   @override
   String get bfOnboarding_questionnaire_maxIntervalAnytimeHours_title =>
@@ -309,13 +310,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String
-      get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes =>
-          'Yes';
+  get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes =>
+      'Yes';
 
   @override
   String
-      get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no =>
-          'No, only when I can';
+  get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no =>
+      'No, only when I can';
 
   @override
   String get bfOnboarding_questionnaire_pumpingTimes_title =>
@@ -377,8 +378,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String
-      get bfOnboarding_questionnaire_nightNotifications_option_onlyIfExceeds =>
-          'Only if the maximum agreed interval is exceeded';
+  get bfOnboarding_questionnaire_nightNotifications_option_onlyIfExceeds =>
+      'Only if the maximum agreed interval is exceeded';
 
   @override
   String get bfOnboarding_questionnaire_nightNotifications_option_no =>
@@ -398,18 +399,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String
-      get bfOnboarding_questionnaire_configureOtherChildren_option_otherChild =>
-          'Yes, for another child';
+  get bfOnboarding_questionnaire_configureOtherChildren_option_otherChild =>
+      'Yes, for another child';
 
   @override
   String bfOnboarding_questionnaire_configureOtherChildren_option_no(
-      String childName) {
+    String childName,
+  ) {
     return 'No, only for $childName';
   }
 
   @override
   String bfOnboarding_questionnaire_copySettingsForOtherChild_title(
-      String childName) {
+    String childName,
+  ) {
     return 'For the new child, would you like to copy $childName’s settings and edit them, or start from scratch?';
   }
 

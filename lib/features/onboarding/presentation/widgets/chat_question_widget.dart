@@ -88,7 +88,11 @@ class ChatQuestionWidget extends StatelessWidget {
         ),
         if (selectedOptions.isNotEmpty && onConfirm != null) ...[
           const SizedBox(height: 16),
-          ChatConfirmButton(onConfirm: onConfirm!, enabled: true, isFemale: isFemale),
+          ChatConfirmButton(
+            onConfirm: onConfirm!,
+            enabled: true,
+            isFemale: isFemale,
+          ),
         ],
       ],
     );
@@ -110,10 +114,7 @@ class ChatQuestionWidget extends StatelessWidget {
   TimeOfDay _parseTimeOfDay(String timeString) {
     try {
       final parts = timeString.split(':');
-      return TimeOfDay(
-        hour: int.parse(parts[0]),
-        minute: int.parse(parts[1]),
-      );
+      return TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
     } catch (_) {
       return TimeOfDay.now();
     }
@@ -156,7 +157,9 @@ class ChatQuestionWidget extends StatelessWidget {
               color: ChatTheme.white,
               borderRadius: BorderRadius.circular(24),
               border: Border.all(
-                color: currentAnswer != null ? ChatTheme.femalePrimary : ChatTheme.textHint,
+                color: currentAnswer != null
+                    ? ChatTheme.femalePrimary
+                    : ChatTheme.textHint,
                 width: currentAnswer != null ? 2 : 1,
               ),
             ),
@@ -164,12 +167,19 @@ class ChatQuestionWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  currentAnswer != null ? currentAnswer.toString().split('T')[0] : 'Seleziona data',
+                  currentAnswer != null
+                      ? currentAnswer.toString().split('T')[0]
+                      : 'Seleziona data',
                   style: TextStyle(
-                    color: currentAnswer != null ? ChatTheme.textPrimary : ChatTheme.textHint,
+                    color: currentAnswer != null
+                        ? ChatTheme.textPrimary
+                        : ChatTheme.textHint,
                   ),
                 ),
-                const Icon(Icons.calendar_today, color: ChatTheme.textSecondary),
+                const Icon(
+                  Icons.calendar_today,
+                  color: ChatTheme.textSecondary,
+                ),
               ],
             ),
           ),
@@ -180,12 +190,14 @@ class ChatQuestionWidget extends StatelessWidget {
           onTap: () async {
             final time = await showTimePicker(
               context: context,
-              initialTime: currentAnswer != null 
-                ? _parseTimeOfDay(currentAnswer.toString())
-                : TimeOfDay.now(),
+              initialTime: currentAnswer != null
+                  ? _parseTimeOfDay(currentAnswer.toString())
+                  : TimeOfDay.now(),
             );
             if (time != null) {
-              onAnswerChanged('${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}');
+              onAnswerChanged(
+                '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}',
+              );
             }
           },
           child: Container(
@@ -194,7 +206,9 @@ class ChatQuestionWidget extends StatelessWidget {
               color: ChatTheme.white,
               borderRadius: BorderRadius.circular(24),
               border: Border.all(
-                color: currentAnswer != null ? ChatTheme.femalePrimary : ChatTheme.textHint,
+                color: currentAnswer != null
+                    ? ChatTheme.femalePrimary
+                    : ChatTheme.textHint,
                 width: currentAnswer != null ? 2 : 1,
               ),
             ),
@@ -202,9 +216,13 @@ class ChatQuestionWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  currentAnswer != null ? currentAnswer.toString() : 'Seleziona orario',
+                  currentAnswer != null
+                      ? currentAnswer.toString()
+                      : 'Seleziona orario',
                   style: TextStyle(
-                    color: currentAnswer != null ? ChatTheme.textPrimary : ChatTheme.textHint,
+                    color: currentAnswer != null
+                        ? ChatTheme.textPrimary
+                        : ChatTheme.textHint,
                   ),
                 ),
                 const Icon(Icons.access_time, color: ChatTheme.textSecondary),
@@ -218,4 +236,3 @@ class ChatQuestionWidget extends StatelessWidget {
     }
   }
 }
-

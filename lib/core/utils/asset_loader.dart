@@ -22,4 +22,3 @@ class AssetLoader {
     return await rootBundle.loadString(path);
   }
 }
-

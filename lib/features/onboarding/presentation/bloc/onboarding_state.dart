@@ -52,12 +52,12 @@ class OnboardingReady extends OnboardingState {
 
   @override
   List<Object?> get props => [
-        questionnaire,
-        currentStepIndex,
-        currentQuestionIndex,
-        answers,
-        chatHistory,
-      ];
+    questionnaire,
+    currentStepIndex,
+    currentQuestionIndex,
+    answers,
+    chatHistory,
+  ];
 
   StepModel get currentStep => questionnaire.steps[currentStepIndex];
 
@@ -135,4 +135,3 @@ class OnboardingCompleted extends OnboardingState {
   @override
   List<Object?> get props => [answers];
 }
-

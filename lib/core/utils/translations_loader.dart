@@ -9,8 +9,12 @@ class TranslationsLoader {
   /// Load translations for a specific locale
   static Future<void> loadTranslations(String locale) async {
     try {
-      final jsonData = await AssetLoader.loadJson('assets/l10n/onboarding_$locale.json');
-      _translations = jsonData.map((key, value) => MapEntry(key, value.toString()));
+      final jsonData = await AssetLoader.loadJson(
+        'assets/l10n/onboarding_$locale.json',
+      );
+      _translations = jsonData.map(
+        (key, value) => MapEntry(key, value.toString()),
+      );
       _currentLocale = locale;
     } catch (e) {
       // Fallback to Italian if loading fails
@@ -48,4 +52,3 @@ extension TranslationsExtension on BuildContext {
     return TranslationsLoader.get(key, params: params);
   }
 }
-

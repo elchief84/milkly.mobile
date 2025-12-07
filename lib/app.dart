@@ -50,11 +50,7 @@ class _MilklyAppState extends State<MilklyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('it'),
-      ],
+      supportedLocales: const [Locale('en'), Locale('it')],
     );
   }
 }
-

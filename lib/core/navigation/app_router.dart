@@ -44,24 +44,18 @@ GoRouter createAppRouter({required bool showOnboarding}) {
         routes: [
           GoRoute(
             path: AppRoutes.home,
-            pageBuilder: (context, state) => NoTransitionPage(
-              key: state.pageKey,
-              child: const HomePage(),
-            ),
+            pageBuilder: (context, state) =>
+                NoTransitionPage(key: state.pageKey, child: const HomePage()),
           ),
           GoRoute(
             path: AppRoutes.plan,
-            pageBuilder: (context, state) => NoTransitionPage(
-              key: state.pageKey,
-              child: const PlanPage(),
-            ),
+            pageBuilder: (context, state) =>
+                NoTransitionPage(key: state.pageKey, child: const PlanPage()),
           ),
           GoRoute(
             path: AppRoutes.growth,
-            pageBuilder: (context, state) => NoTransitionPage(
-              key: state.pageKey,
-              child: const GrowthPage(),
-            ),
+            pageBuilder: (context, state) =>
+                NoTransitionPage(key: state.pageKey, child: const GrowthPage()),
           ),
           GoRoute(
             path: AppRoutes.settings,
@@ -75,4 +69,3 @@ GoRouter createAppRouter({required bool showOnboarding}) {
     ],
   );
 }
-

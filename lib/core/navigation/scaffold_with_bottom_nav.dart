@@ -6,17 +6,11 @@ import 'package:smart_breastfeeding/core/navigation/app_router.dart';
 class ScaffoldWithBottomNav extends StatelessWidget {
   final Widget child;
 
-  const ScaffoldWithBottomNav({
-    super.key,
-    required this.child,
-  });
+  const ScaffoldWithBottomNav({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: child,
-      bottomNavigationBar: _BottomNavBar(),
-    );
+    return Scaffold(body: child, bottomNavigationBar: _BottomNavBar());
   }
 }
 
@@ -75,4 +69,3 @@ class _BottomNavBar extends StatelessWidget {
     }
   }
 }
-

@@ -7,22 +7,22 @@ part of 'questionnaire_model.dart';
 // **************************************************************************
 
 _$QuestionnaireModelImpl _$$QuestionnaireModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$QuestionnaireModelImpl(
-      version: (json['version'] as num).toInt(),
-      flowId: json['flowId'] as String,
-      steps: (json['steps'] as List<dynamic>)
-          .map((e) => StepModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => _$QuestionnaireModelImpl(
+  version: (json['version'] as num).toInt(),
+  flowId: json['flowId'] as String,
+  steps: (json['steps'] as List<dynamic>)
+      .map((e) => StepModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$$QuestionnaireModelImplToJson(
-        _$QuestionnaireModelImpl instance) =>
-    <String, dynamic>{
-      'version': instance.version,
-      'flowId': instance.flowId,
-      'steps': instance.steps,
-    };
+  _$QuestionnaireModelImpl instance,
+) => <String, dynamic>{
+  'version': instance.version,
+  'flowId': instance.flowId,
+  'steps': instance.steps,
+};
 
 _$StepModelImpl _$$StepModelImplFromJson(Map<String, dynamic> json) =>
     _$StepModelImpl(
@@ -71,29 +71,23 @@ Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
     };
 
 _$OptionModelImpl _$$OptionModelImplFromJson(Map<String, dynamic> json) =>
-    _$OptionModelImpl(
-      id: json['id'] as String,
-      text: json['text'] as String,
-    );
+    _$OptionModelImpl(id: json['id'] as String, text: json['text'] as String);
 
 Map<String, dynamic> _$$OptionModelImplToJson(_$OptionModelImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'text': instance.text,
-    };
+    <String, dynamic>{'id': instance.id, 'text': instance.text};
 
 _$ConditionalLogicModelImpl _$$ConditionalLogicModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ConditionalLogicModelImpl(
-      showIf: json['showIf'] as String,
-      field: json['field'] as String,
-      value: json['value'],
-    );
+  Map<String, dynamic> json,
+) => _$ConditionalLogicModelImpl(
+  showIf: json['showIf'] as String,
+  field: json['field'] as String,
+  value: json['value'],
+);
 
 Map<String, dynamic> _$$ConditionalLogicModelImplToJson(
-        _$ConditionalLogicModelImpl instance) =>
-    <String, dynamic>{
-      'showIf': instance.showIf,
-      'field': instance.field,
-      'value': instance.value,
-    };
+  _$ConditionalLogicModelImpl instance,
+) => <String, dynamic>{
+  'showIf': instance.showIf,
+  'field': instance.field,
+  'value': instance.value,
+};
