@@ -117,8 +117,8 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String
-  get bfOnboarding_questionnaire_childrenInThisBirth_option_moreThanTwo =>
-      'Più di due';
+      get bfOnboarding_questionnaire_childrenInThisBirth_option_moreThanTwo =>
+          'Più di due';
 
   @override
   String bfOnboarding_questionnaire_currentFeedingMode_title(String childName) {
@@ -131,13 +131,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String
-  get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped =>
-      'Seno + latte materno tirato (biberon)';
+      get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndPumped =>
+          'Seno + latte materno tirato (biberon)';
 
   @override
   String
-  get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula =>
-      'Seno + latte artificiale (formula)';
+      get bfOnboarding_questionnaire_currentFeedingMode_option_breastAndFormula =>
+          'Seno + latte artificiale (formula)';
 
   @override
   String get bfOnboarding_questionnaire_currentFeedingMode_option_pumpedOnly =>
@@ -174,8 +174,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String bfOnboarding_questionnaire_pediatricFeedingMode_title(
-    String childName,
-  ) {
+      String childName) {
     return 'Il tuo pediatra ti ha consigliato di allattare $childName…';
   }
 
@@ -193,8 +192,8 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String
-  get bfOnboarding_questionnaire_pediatricFeedingMode_option_notDefined =>
-      'Non è stato definito in dettaglio';
+      get bfOnboarding_questionnaire_pediatricFeedingMode_option_notDefined =>
+          'Non è stato definito in dettaglio';
 
   @override
   String get bfOnboarding_questionnaire_dayIntervalDescription_title =>
@@ -238,8 +237,8 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String
-  get bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow =>
-      'Non ricordo';
+      get bfOnboarding_questionnaire_maxIntervalAnytimeDefined_option_dontKnow =>
+          'Non ricordo';
 
   @override
   String get bfOnboarding_questionnaire_maxIntervalAnytimeHours_title =>
@@ -312,13 +311,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String
-  get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes =>
-      'Sì';
+      get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_yes =>
+          'Sì';
 
   @override
   String
-  get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no =>
-      'No, solo quando riesco';
+      get bfOnboarding_questionnaire_pediatricPumpingScheduleDefined_option_no =>
+          'No, solo quando riesco';
 
   @override
   String get bfOnboarding_questionnaire_pumpingTimes_title =>
@@ -380,8 +379,8 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String
-  get bfOnboarding_questionnaire_nightNotifications_option_onlyIfExceeds =>
-      'Solo se si supera l’intervallo massimo che avete stabilito';
+      get bfOnboarding_questionnaire_nightNotifications_option_onlyIfExceeds =>
+          'Solo se si supera l’intervallo massimo che avete stabilito';
 
   @override
   String get bfOnboarding_questionnaire_nightNotifications_option_no =>
@@ -401,20 +400,18 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String
-  get bfOnboarding_questionnaire_configureOtherChildren_option_otherChild =>
-      'Sì, per un altro bambino';
+      get bfOnboarding_questionnaire_configureOtherChildren_option_otherChild =>
+          'Sì, per un altro bambino';
 
   @override
   String bfOnboarding_questionnaire_configureOtherChildren_option_no(
-    String childName,
-  ) {
+      String childName) {
     return 'No, solo per $childName';
   }
 
   @override
   String bfOnboarding_questionnaire_copySettingsForOtherChild_title(
-    String childName,
-  ) {
+      String childName) {
     return 'Per il nuovo bambino preferisci copiare le impostazioni di $childName e modificarle dopo, oppure ripartire da zero?';
   }
 
