@@ -1,0 +1,61 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday at midnight
+
+jobs:
+  code-metrics:
+    name: Code Metrics & Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for better analysis
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Run Flutter analyze with detailed output
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+      
+      - name: Check for TODO/FIXME comments
+        run: |
+          echo "Checking for TODO and FIXME comments..."
+          grep -r "TODO\|FIXME" lib/ || echo "No TODO/FIXME found"
+        continue-on-error: true
+      
+      - name: Count lines of code
+        run: |
+          echo "Lines of code statistics:"
+          find lib -name '*.dart' | xargs wc -l | tail -1
+
+  dependency-review:
+    name: Dependency Security Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    timeout-minutes: 5
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+

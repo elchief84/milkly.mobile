@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "404156749484",
+    "project_id": "milkly-975ae",
+    "storage_bucket": "milkly-975ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404156749484:android:00b16612150bf928f77109",
+        "android_client_info": {
+          "package_name": "it.devthis.milkly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuBsL8eM5mZ1PWkY7ZjLPpJ3ydQt6Z73E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

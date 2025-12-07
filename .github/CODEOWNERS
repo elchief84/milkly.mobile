@@ -1,0 +1,17 @@
+# Code Owners for Milkly project
+# These owners will be automatically requested for review when someone opens a pull request.
+
+# Default owners for everything in the repo
+* @vromano
+
+# Flutter-specific files
+*.dart @vromano
+pubspec.yaml @vromano
+
+# CI/CD workflows
+/.github/ @vromano
+
+# Assets and localization
+/assets/ @vromano
+/lib/l10n/ @vromano
+
