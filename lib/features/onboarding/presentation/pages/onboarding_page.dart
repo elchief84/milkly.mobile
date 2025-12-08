@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smart_breastfeeding/core/constants/app_constants.dart';
-import 'package:smart_breastfeeding/core/di/injection.dart';
 import 'package:smart_breastfeeding/core/navigation/app_router.dart';
 import 'package:smart_breastfeeding/core/theme/app_theme.dart';
 import 'package:smart_breastfeeding/core/theme/theme_cubit.dart';
@@ -68,13 +65,23 @@ class _OnboardingContentState extends State<_OnboardingContent> {
         backgroundColor: context.colorScheme.surface,
         elevation: 0,
         centerTitle: true,
-        title: Text('Start your journey'),
+        title: const Text('Start your journey'),
       ),
       body: SafeArea(
         child: BlocConsumer<OnboardingBloc, OnboardingState>(
           listener: (context, state) {
-            // Auto-scroll when state changes to show new question or completion
-            if (state is OnboardingReady || state is OnboardingCompleted) {
+            // Navigate to review page when onboarding is completed
+            if (state is OnboardingCompleted) {
+              context.push(
+                AppRoutes.onboardingReview,
+                extra: {
+                  'answers': state.answers,
+                  'questionnaire': state.questionnaire,
+                },
+              );
+            }
+            // Auto-scroll when state changes to show new question
+            if (state is OnboardingReady) {
               _scrollToBottom();
             }
           },
@@ -105,7 +112,8 @@ class _OnboardingContentState extends State<_OnboardingContent> {
             }
 
             if (state is OnboardingCompleted) {
-              return _buildCompletionView(context, state);
+              // Show loading while navigating to review page
+              return const Center(child: CircularProgressIndicator());
             }
 
             if (state is OnboardingReady) {
@@ -302,109 +310,5 @@ class _OnboardingContentState extends State<_OnboardingContent> {
         ),
       ),
     );
-  }
-
-  Widget _buildCompletionView(BuildContext context, OnboardingCompleted state) {
-    final currentTheme = context.watch<ThemeCubit>().state;
-
-    // Get the last state to access chat history
-    return BlocBuilder<OnboardingBloc, OnboardingState>(
-      builder: (context, currentState) {
-        final OnboardingReady? readyState = currentState is OnboardingReady
-            ? currentState
-            : null;
-
-        return Container(
-          color: AppTheme.surfaceWhite,
-          child: Column(
-            children: [
-              Expanded(
-                child: CustomScrollView(
-                  controller: _scrollController,
-                  slivers: [
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      fillOverscroll: true,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Spacer(),
-                            // Welcome message
-                            AssistantMessageBubble(
-                              message:
-                                  'Welcome! Let\'s set up your personalized feeding plan.',
-                              showAvatar: true,
-                              variant: currentTheme,
-                            ),
-                            const SizedBox(height: 16),
-
-                            // Show ALL chat history
-                            if (readyState != null)
-                              ..._buildChatHistory(
-                                context,
-                                readyState,
-                                currentTheme,
-                              ),
-
-                            // Final confirmation message
-                            const SizedBox(height: 8),
-                            AssistantMessageBubble(
-                              message:
-                                  'Perfect! Now I can create your personalized feeding plan.',
-                              showAvatar: true,
-                              variant: currentTheme,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                color: AppTheme.white,
-                padding: const EdgeInsets.all(16),
-                child: SafeArea(
-                  top: false,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () => _completeOnboarding(context),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.getPrimaryColor(currentTheme),
-                        foregroundColor: AppTheme.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        elevation: 0,
-                      ),
-                      child: const Text(
-                        'Create my plan',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> _completeOnboarding(BuildContext context) async {
-    final prefs = getIt<SharedPreferences>();
-    await prefs.setBool(AppConstants.keyOnboardingCompleted, true);
-
-    if (context.mounted) {
-      context.go(AppRoutes.home);
-    }
   }
 }

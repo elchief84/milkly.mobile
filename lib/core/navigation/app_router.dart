@@ -4,6 +4,7 @@ import 'package:smart_breastfeeding/core/navigation/scaffold_with_bottom_nav.dar
 import 'package:smart_breastfeeding/features/growth/presentation/pages/growth_page.dart';
 import 'package:smart_breastfeeding/features/home/presentation/pages/home_page.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:smart_breastfeeding/features/onboarding/presentation/pages/onboarding_review_page.dart';
 import 'package:smart_breastfeeding/features/plan/presentation/pages/plan_page.dart';
 import 'package:smart_breastfeeding/features/settings/presentation/pages/settings_page.dart';
 
@@ -19,6 +20,7 @@ class AppRoutes {
 
   // Onboarding
   static const String onboarding = '/onboarding';
+  static const String onboardingReview = '/onboarding/review';
 }
 
 /// Create app router instance
@@ -34,6 +36,22 @@ GoRouter createAppRouter({required bool showOnboarding}) {
           fullscreenDialog: true,
           child: const OnboardingPage(),
         ),
+      ),
+
+      // Onboarding review (fullscreen, no back)
+      GoRoute(
+        path: AppRoutes.onboardingReview,
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          return MaterialPage(
+            key: state.pageKey,
+            fullscreenDialog: true,
+            child: OnboardingReviewPage(
+              answers: extra?['answers'] as Map<String, dynamic>? ?? {},
+              questionnaire: extra?['questionnaire'],
+            ),
+          );
+        },
       ),
 
       // Main app with bottom navigation

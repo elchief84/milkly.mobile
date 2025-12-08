@@ -149,7 +149,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     if (state is! OnboardingReady) return;
 
     final currentState = state as OnboardingReady;
-    emit(OnboardingCompleted(currentState.answers));
+    emit(OnboardingCompleted(currentState.answers, currentState.questionnaire));
   }
 
   String _getAnswerDisplayText(QuestionModel question, dynamic answer) {

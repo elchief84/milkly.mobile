@@ -157,9 +157,10 @@ class OnboardingError extends OnboardingState {
 /// Onboarding completed
 class OnboardingCompleted extends OnboardingState {
   final Map<String, dynamic> answers;
+  final QuestionnaireModel questionnaire;
 
-  const OnboardingCompleted(this.answers);
+  const OnboardingCompleted(this.answers, this.questionnaire);
 
   @override
-  List<Object?> get props => [answers];
+  List<Object?> get props => [answers, questionnaire];
 }

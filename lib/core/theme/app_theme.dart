@@ -120,9 +120,10 @@ class AppTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        elevation: 2,
+        elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: neutralSurfaceColor,
+        color: Colors.white,
+        shadowColor: neutralPrimaryColor.withValues(alpha: 0.3),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -227,9 +228,10 @@ class AppTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        elevation: 2,
+        elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: girlSurfaceColor,
+        color: Colors.white,
+        shadowColor: girlPrimaryColor.withValues(alpha: 0.3),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -323,9 +325,10 @@ class AppTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        elevation: 2,
+        elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: boySurfaceColor,
+        color: Colors.white,
+        shadowColor: boyPrimaryColor.withValues(alpha: 0.3),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
