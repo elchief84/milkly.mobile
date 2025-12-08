@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:smart_breastfeeding/core/theme/chat_theme.dart';
+import 'package:smart_breastfeeding/core/theme/app_theme.dart';
 
 class ChatOptionButton extends StatelessWidget {
   final String text;
   final bool isSelected;
   final VoidCallback onTap;
-  final bool isFemale;
+  final ThemeVariant variant;
 
   const ChatOptionButton({
     super.key,
     required this.text,
     required this.isSelected,
     required this.onTap,
-    this.isFemale = true,
+    this.variant = ThemeVariant.neutral,
   });
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = ChatTheme.getPrimaryColor(isFemale: isFemale);
-    final primaryLight = ChatTheme.getPrimaryPaleColor(isFemale: isFemale);
+    final primaryColor = AppTheme.getPrimaryColor(variant);
+    final primaryLight = AppTheme.getPrimaryPaleColor(variant);
 
     return Material(
       color: Colors.transparent,
@@ -41,7 +41,7 @@ class ChatOptionButton extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: isSelected
                   ? primaryColor
-                  : ChatTheme.getPrimaryColor(isFemale: isFemale),
+                  : AppTheme.getPrimaryColor(variant),
             ),
           ),
         ),

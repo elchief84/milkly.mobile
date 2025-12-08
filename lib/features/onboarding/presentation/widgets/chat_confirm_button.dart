@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:smart_breastfeeding/core/theme/chat_theme.dart';
+import 'package:smart_breastfeeding/core/theme/app_theme.dart';
 
 class ChatConfirmButton extends StatelessWidget {
   final VoidCallback onConfirm;
   final bool enabled;
-  final bool isFemale;
+  final ThemeVariant variant;
 
   const ChatConfirmButton({
     super.key,
     required this.onConfirm,
     this.enabled = true,
-    this.isFemale = true,
+    this.variant = ThemeVariant.neutral,
   });
 
   @override
@@ -22,9 +22,9 @@ class ChatConfirmButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: enabled ? onConfirm : null,
           style: ElevatedButton.styleFrom(
-            backgroundColor: ChatTheme.getPrimaryColor(isFemale: isFemale),
-            foregroundColor: ChatTheme.white,
-            disabledBackgroundColor: ChatTheme.textHint,
+            backgroundColor: AppTheme.getPrimaryColor(variant),
+            foregroundColor: AppTheme.white,
+            disabledBackgroundColor: AppTheme.textHintColor,
             padding: const EdgeInsets.symmetric(vertical: 14),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
@@ -42,7 +42,7 @@ class ChatConfirmButton extends StatelessWidget {
               Icon(
                 Icons.arrow_forward,
                 size: 18,
-                color: enabled ? ChatTheme.white : ChatTheme.textHint,
+                color: enabled ? AppTheme.white : AppTheme.textHintColor,
               ),
             ],
           ),

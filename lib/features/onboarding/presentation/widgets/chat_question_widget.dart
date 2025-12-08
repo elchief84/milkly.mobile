@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_breastfeeding/core/theme/chat_theme.dart';
+import 'package:smart_breastfeeding/core/theme/app_theme.dart';
 import 'package:smart_breastfeeding/features/onboarding/data/models/questionnaire_model.dart';
 import 'package:smart_breastfeeding/features/onboarding/domain/entities/question_type.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_message_bubble.dart';
@@ -12,7 +12,7 @@ class ChatQuestionWidget extends StatelessWidget {
   final dynamic currentAnswer;
   final Function(dynamic) onAnswerChanged;
   final VoidCallback? onConfirm;
-  final bool isFemale;
+  final ThemeVariant variant;
 
   const ChatQuestionWidget({
     super.key,
@@ -20,7 +20,7 @@ class ChatQuestionWidget extends StatelessWidget {
     required this.currentAnswer,
     required this.onAnswerChanged,
     this.onConfirm,
-    this.isFemale = true,
+    this.variant = ThemeVariant.neutral,
   });
 
   @override
@@ -43,7 +43,11 @@ class ChatQuestionWidget extends StatelessWidget {
   Widget _buildSingleChoice(BuildContext context) {
     return Column(
       children: [
-        AssistantMessageBubble(message: question.title, showAvatar: true),
+        AssistantMessageBubble(
+          message: question.title,
+          showAvatar: true,
+          variant: variant,
+        ),
         const SizedBox(height: 12),
         ChatOptionsContainer(
           children: question.options!.map((option) {
@@ -51,7 +55,7 @@ class ChatQuestionWidget extends StatelessWidget {
             return ChatOptionButton(
               text: option.text,
               isSelected: isSelected,
-              isFemale: isFemale,
+              variant: variant,
               onTap: () => onAnswerChanged(option.id),
             );
           }).toList(),
@@ -65,7 +69,11 @@ class ChatQuestionWidget extends StatelessWidget {
 
     return Column(
       children: [
-        AssistantMessageBubble(message: question.title, showAvatar: true),
+        AssistantMessageBubble(
+          message: question.title,
+          showAvatar: true,
+          variant: variant,
+        ),
         const SizedBox(height: 12),
         ChatOptionsContainer(
           children: question.options!.map((option) {
@@ -73,7 +81,7 @@ class ChatQuestionWidget extends StatelessWidget {
             return ChatOptionButton(
               text: option.text,
               isSelected: isSelected,
-              isFemale: isFemale,
+              variant: variant,
               onTap: () {
                 final updated = List.from(selectedOptions);
                 if (isSelected) {
@@ -91,7 +99,7 @@ class ChatQuestionWidget extends StatelessWidget {
           ChatConfirmButton(
             onConfirm: onConfirm!,
             enabled: true,
-            isFemale: isFemale,
+            variant: variant,
           ),
         ],
       ],
@@ -101,7 +109,11 @@ class ChatQuestionWidget extends StatelessWidget {
   Widget _buildInputField(BuildContext context, QuestionType questionType) {
     return Column(
       children: [
-        AssistantMessageBubble(message: question.title, showAvatar: true),
+        AssistantMessageBubble(
+          message: question.title,
+          showAvatar: true,
+          variant: variant,
+        ),
         const SizedBox(height: 12),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -127,6 +139,7 @@ class ChatQuestionWidget extends StatelessWidget {
           placeholder: question.placeholder ?? 'Scrivi qui...',
           initialValue: currentAnswer?.toString(),
           onSend: onAnswerChanged,
+          variant: variant,
         );
 
       case QuestionType.number:
@@ -138,6 +151,7 @@ class ChatQuestionWidget extends StatelessWidget {
             final number = int.tryParse(value);
             if (number != null) onAnswerChanged(number);
           },
+          variant: variant,
         );
 
       case QuestionType.date:
@@ -154,12 +168,12 @@ class ChatQuestionWidget extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: ChatTheme.white,
+              color: AppTheme.white,
               borderRadius: BorderRadius.circular(24),
               border: Border.all(
                 color: currentAnswer != null
-                    ? ChatTheme.femalePrimary
-                    : ChatTheme.textHint,
+                    ? AppTheme.getPrimaryColor(variant)
+                    : AppTheme.textHintColor,
                 width: currentAnswer != null ? 2 : 1,
               ),
             ),
@@ -172,13 +186,13 @@ class ChatQuestionWidget extends StatelessWidget {
                       : 'Seleziona data',
                   style: TextStyle(
                     color: currentAnswer != null
-                        ? ChatTheme.textPrimary
-                        : ChatTheme.textHint,
+                        ? AppTheme.textDarkPrimary
+                        : AppTheme.textHintColor,
                   ),
                 ),
                 const Icon(
                   Icons.calendar_today,
-                  color: ChatTheme.textSecondary,
+                  color: AppTheme.textDarkSecondary,
                 ),
               ],
             ),
@@ -203,12 +217,12 @@ class ChatQuestionWidget extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: ChatTheme.white,
+              color: AppTheme.white,
               borderRadius: BorderRadius.circular(24),
               border: Border.all(
                 color: currentAnswer != null
-                    ? ChatTheme.femalePrimary
-                    : ChatTheme.textHint,
+                    ? AppTheme.getPrimaryColor(variant)
+                    : AppTheme.textHintColor,
                 width: currentAnswer != null ? 2 : 1,
               ),
             ),
@@ -221,11 +235,14 @@ class ChatQuestionWidget extends StatelessWidget {
                       : 'Seleziona orario',
                   style: TextStyle(
                     color: currentAnswer != null
-                        ? ChatTheme.textPrimary
-                        : ChatTheme.textHint,
+                        ? AppTheme.textDarkPrimary
+                        : AppTheme.textHintColor,
                   ),
                 ),
-                const Icon(Icons.access_time, color: ChatTheme.textSecondary),
+                const Icon(
+                  Icons.access_time,
+                  color: AppTheme.textDarkSecondary,
+                ),
               ],
             ),
           ),

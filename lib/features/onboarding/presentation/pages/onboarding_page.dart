@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_breastfeeding/core/constants/app_constants.dart';
 import 'package:smart_breastfeeding/core/di/injection.dart';
 import 'package:smart_breastfeeding/core/navigation/app_router.dart';
-import 'package:smart_breastfeeding/core/theme/chat_theme.dart';
+import 'package:smart_breastfeeding/core/theme/app_theme.dart';
+import 'package:smart_breastfeeding/core/theme/theme_cubit.dart';
 import 'package:smart_breastfeeding/core/utils/l10n_helper.dart';
 import 'package:smart_breastfeeding/core/utils/theme_extensions.dart';
 import 'package:smart_breastfeeding/features/onboarding/domain/entities/question_type.dart';
@@ -62,6 +63,12 @@ class _OnboardingContentState extends State<_OnboardingContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorScheme.surface,
+      appBar: AppBar(
+        backgroundColor: context.colorScheme.surface,
+        elevation: 0,
+        centerTitle: true,
+        title: Text('Start your journey'),
+      ),
       body: SafeArea(
         child: BlocConsumer<OnboardingBloc, OnboardingState>(
           listener: (context, state) {
@@ -150,6 +157,9 @@ class _OnboardingContentState extends State<_OnboardingContent> {
   }
 
   Widget _buildChatbotView(BuildContext context, OnboardingReady state) {
+    // Get current theme variant
+    final currentTheme = context.watch<ThemeCubit>().state;
+
     return Container(
       color: context.colorScheme.surface,
       child: Column(
@@ -168,27 +178,29 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                       hasScrollBody: false,
                       fillOverscroll: true,
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+                        padding: const EdgeInsets.fromLTRB(0, 0, 16, 16),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const Spacer(),
                             // Welcome message
                             AssistantMessageBubble(
-                              message: context.l10n.onboardingSubtitle,
+                              message:
+                                  'Welcome! Let\'s set up your personalized feeding plan.',
                               showAvatar: true,
+                              variant: currentTheme,
                             ),
                             const SizedBox(height: 16),
 
                             // Chat history - all previous Q&A
-                            ..._buildChatHistory(context, state),
+                            ..._buildChatHistory(context, state, currentTheme),
 
                             // Current question
                             ChatQuestionWidget(
                               question: state.currentQuestion,
                               currentAnswer:
                                   state.answers[state.currentQuestion.id],
-                              isFemale: true,
+                              variant: currentTheme,
                               onAnswerChanged: (answer) {
                                 context.read<OnboardingBloc>().add(
                                   AnswerQuestion(
@@ -196,6 +208,13 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                                     answer: answer,
                                   ),
                                 );
+
+                                // Change theme if this is the childSex question
+                                if (state.currentQuestion.id == 'childSex') {
+                                  context
+                                      .read<ThemeCubit>()
+                                      .setThemeFromChildSex(answer as String);
+                                }
 
                                 // Auto-confirm for single choice and input fields
                                 final questionType = QuestionType.fromString(
@@ -238,34 +257,48 @@ class _OnboardingContentState extends State<_OnboardingContent> {
     );
   }
 
-  List<Widget> _buildChatHistory(BuildContext context, OnboardingReady state) {
+  List<Widget> _buildChatHistory(
+    BuildContext context,
+    OnboardingReady state,
+    ThemeVariant currentTheme,
+  ) {
     return state.chatHistory.expand((message) {
       return [
-        AssistantMessageBubble(message: message.questionText, showAvatar: true),
+        AssistantMessageBubble(
+          message: message.questionText,
+          showAvatar: true,
+          variant: currentTheme,
+        ),
         const SizedBox(height: 12),
         if (message.answerText != null && message.answerText!.isNotEmpty)
-          UserMessageBubble(message: message.answerText!, isFemale: true),
+          UserMessageBubble(
+            message: message.answerText!,
+            variant: currentTheme,
+          ),
         const SizedBox(height: 16),
       ];
     }).toList();
   }
 
   Widget _buildProgressBar(BuildContext context, OnboardingReady state) {
+    final currentTheme = context.watch<ThemeCubit>().state;
     final progress =
         (state.currentStepIndex + 1) / state.questionnaire.steps.length;
     return Container(
-      color: ChatTheme.white,
+      color: AppTheme.white,
       child: LinearProgressIndicator(
         value: progress,
-        backgroundColor: ChatTheme.femalePrimaryLight,
-        valueColor: const AlwaysStoppedAnimation<Color>(
-          ChatTheme.femalePrimary,
+        backgroundColor: AppTheme.getPrimaryLightColor(currentTheme),
+        valueColor: AlwaysStoppedAnimation<Color>(
+          AppTheme.getPrimaryColor(currentTheme),
         ),
       ),
     );
   }
 
   Widget _buildCompletionView(BuildContext context, OnboardingCompleted state) {
+    final currentTheme = context.watch<ThemeCubit>().state;
+
     // Get the last state to access chat history
     return BlocBuilder<OnboardingBloc, OnboardingState>(
       builder: (context, currentState) {
@@ -274,7 +307,7 @@ class _OnboardingContentState extends State<_OnboardingContent> {
             : null;
 
         return Container(
-          color: ChatTheme.backgroundColor,
+          color: AppTheme.surfaceWhite,
           child: Column(
             children: [
               Expanded(
@@ -292,21 +325,28 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                             const Spacer(),
                             // Welcome message
                             AssistantMessageBubble(
-                              message: context.l10n.onboardingSubtitle,
+                              message:
+                                  'Welcome! Let\'s set up your personalized feeding plan.',
                               showAvatar: true,
+                              variant: currentTheme,
                             ),
                             const SizedBox(height: 16),
 
                             // Show ALL chat history
                             if (readyState != null)
-                              ..._buildChatHistory(context, readyState),
+                              ..._buildChatHistory(
+                                context,
+                                readyState,
+                                currentTheme,
+                              ),
 
                             // Final confirmation message
                             const SizedBox(height: 8),
                             AssistantMessageBubble(
                               message:
-                                  'Perfetto! Ora posso creare il tuo piano di allattamento personalizzato.',
+                                  'Perfect! Now I can create your personalized feeding plan.',
                               showAvatar: true,
+                              variant: currentTheme,
                             ),
                           ],
                         ),
@@ -316,7 +356,7 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                 ),
               ),
               Container(
-                color: ChatTheme.white,
+                color: AppTheme.white,
                 padding: const EdgeInsets.all(16),
                 child: SafeArea(
                   top: false,
@@ -325,8 +365,8 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                     child: ElevatedButton(
                       onPressed: () => _completeOnboarding(context),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: ChatTheme.femalePrimary,
-                        foregroundColor: ChatTheme.white,
+                        backgroundColor: AppTheme.getPrimaryColor(currentTheme),
+                        foregroundColor: AppTheme.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -334,7 +374,7 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                         elevation: 0,
                       ),
                       child: const Text(
-                        'Crea il mio piano',
+                        'Create my plan',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

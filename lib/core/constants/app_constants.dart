@@ -12,6 +12,7 @@ class AppConstants {
   // SharedPreferences Keys
   static const String keyOnboardingCompleted = 'onboarding_completed';
   static const String keyThemeMode = 'theme_mode';
+  static const String keyThemeVariant = 'theme_variant'; // neutral, girl, boy
 
   // Default Values
   static const int defaultFeedingDurationMinutes = 15;

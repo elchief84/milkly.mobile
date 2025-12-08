@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_breastfeeding/core/theme/chat_theme.dart';
+import 'package:smart_breastfeeding/core/theme/app_theme.dart';
+import 'package:smart_breastfeeding/core/utils/theme_extensions.dart';
 
 class ChatInputField extends StatefulWidget {
   final String? placeholder;
@@ -7,6 +8,7 @@ class ChatInputField extends StatefulWidget {
   final String? initialValue;
   final bool enabled;
   final Function(String) onSend;
+  final ThemeVariant variant;
 
   const ChatInputField({
     super.key,
@@ -15,6 +17,7 @@ class ChatInputField extends StatefulWidget {
     this.initialValue,
     this.enabled = true,
     required this.onSend,
+    this.variant = ThemeVariant.neutral,
   });
 
   @override
@@ -54,15 +57,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: ChatTheme.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: _hasText ? ChatTheme.femalePrimary : ChatTheme.textHint,
-          width: _hasText ? 2 : 1,
-        ),
-      ),
+      color: context.colorScheme.surface,
       child: Row(
         children: [
           Expanded(
@@ -75,8 +70,8 @@ class _ChatInputFieldState extends State<ChatInputField> {
                 border: InputBorder.none,
                 isDense: true,
                 contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 8,
+                  horizontal: 15,
+                  vertical: 15,
                 ),
               ),
               onSubmitted: (_) => _handleSend(),
@@ -86,8 +81,8 @@ class _ChatInputFieldState extends State<ChatInputField> {
             icon: Icon(
               Icons.send,
               color: _hasText && widget.enabled
-                  ? ChatTheme.femalePrimary
-                  : ChatTheme.textHint,
+                  ? AppTheme.getPrimaryColor(widget.variant)
+                  : AppTheme.getPrimaryLightColor(widget.variant),
             ),
             onPressed: _hasText && widget.enabled ? _handleSend : null,
             padding: EdgeInsets.zero,

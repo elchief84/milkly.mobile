@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:smart_breastfeeding/core/theme/chat_theme.dart';
+import 'package:smart_breastfeeding/core/theme/app_theme.dart';
 
 class AssistantMessageBubble extends StatelessWidget {
   final String message;
   final bool showAvatar;
+  final ThemeVariant variant;
 
   const AssistantMessageBubble({
     super.key,
     required this.message,
     this.showAvatar = true,
+    this.variant = ThemeVariant.neutral,
   });
 
   @override
@@ -16,16 +18,17 @@ class AssistantMessageBubble extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 60, top: 8, bottom: 8),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           if (showAvatar) ...[
             CircleAvatar(
               radius: 18,
-              backgroundColor: ChatTheme.femalePrimaryLight,
-              child: const Icon(
+              backgroundColor: AppTheme.getPrimaryLightColor(variant),
+              child: Icon(
                 Icons.person,
                 size: 20,
-                color: ChatTheme.femalePrimary,
+                color: AppTheme.getPrimaryColor(variant),
               ),
             ),
             const SizedBox(width: 8),
@@ -40,7 +43,7 @@ class AssistantMessageBubble extends StatelessWidget {
                     'Assistente',
                     style: TextStyle(
                       fontSize: 12,
-                      color: ChatTheme.textSecondary,
+                      color: AppTheme.textDarkSecondary,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -52,8 +55,8 @@ class AssistantMessageBubble extends StatelessWidget {
                     vertical: 12,
                   ),
                   decoration: BoxDecoration(
-                    color: ChatTheme.femalePrimaryLight,
-                    borderRadius: BorderRadius.only(
+                    color: AppTheme.getPrimaryLightColor(variant),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15),
                       bottomLeft: Radius.circular(3),
@@ -64,7 +67,7 @@ class AssistantMessageBubble extends StatelessWidget {
                     message,
                     style: const TextStyle(
                       fontSize: 16,
-                      color: ChatTheme.textPrimary,
+                      color: AppTheme.textDarkPrimary,
                       height: 1.5,
                     ),
                   ),
@@ -80,12 +83,12 @@ class AssistantMessageBubble extends StatelessWidget {
 
 class UserMessageBubble extends StatelessWidget {
   final String message;
-  final bool isFemale;
+  final ThemeVariant variant;
 
   const UserMessageBubble({
     super.key,
     required this.message,
-    this.isFemale = true,
+    this.variant = ThemeVariant.neutral,
   });
 
   @override
@@ -101,7 +104,7 @@ class UserMessageBubble extends StatelessWidget {
               'Tu',
               style: TextStyle(
                 fontSize: 12,
-                color: ChatTheme.textSecondary,
+                color: AppTheme.textDarkSecondary,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -109,8 +112,8 @@ class UserMessageBubble extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: ChatTheme.getPrimaryColor(isFemale: isFemale),
-                borderRadius: BorderRadius.only(
+                color: AppTheme.getPrimaryColor(variant),
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(15),
                   topRight: Radius.circular(15),
                   bottomLeft: Radius.circular(15),
@@ -121,7 +124,7 @@ class UserMessageBubble extends StatelessWidget {
                 message,
                 style: const TextStyle(
                   fontSize: 16,
-                  color: ChatTheme.white,
+                  color: AppTheme.white,
                   height: 1.5,
                 ),
               ),
