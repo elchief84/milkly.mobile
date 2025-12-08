@@ -14,6 +14,7 @@ import 'package:smart_breastfeeding/features/onboarding/presentation/bloc/onboar
 import 'package:smart_breastfeeding/features/onboarding/presentation/bloc/onboarding_event.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/bloc/onboarding_state.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_message_bubble.dart';
+import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_photo_bubble.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_question_widget.dart';
 
 /// Onboarding page - guided chatbot flow for initial setup
@@ -215,11 +216,12 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                                 );
                               }
 
-                              // Auto-confirm for single choice and input fields
+                              // Auto-confirm for single choice, photo and input fields
                               final questionType = QuestionType.fromString(
                                 state.currentQuestion.type,
                               );
                               if (questionType == QuestionType.singleChoice ||
+                                  questionType == QuestionType.photo ||
                                   questionType == QuestionType.text ||
                                   questionType == QuestionType.number ||
                                   questionType == QuestionType.date ||
@@ -269,10 +271,18 @@ class _OnboardingContentState extends State<_OnboardingContent> {
         ),
         const SizedBox(height: 12),
         if (message.answerText != null && message.answerText!.isNotEmpty)
-          UserMessageBubble(
-            message: message.answerText!,
-            variant: currentTheme,
-          ),
+          // Show photo bubble for photo questions, text bubble for others
+          message.questionType == 'photo' &&
+                  message.answer != null &&
+                  message.answer.toString().isNotEmpty
+              ? PhotoMessageBubble(
+                  photoPath: message.answer.toString(),
+                  variant: currentTheme,
+                )
+              : UserMessageBubble(
+                  message: message.answerText!,
+                  variant: currentTheme,
+                ),
         const SizedBox(height: 16),
       ];
     }).toList();

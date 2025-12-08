@@ -7,9 +7,20 @@
       "title": "Profilo del bambino",
       "questions": [
         {
+          "id": "childSex",
+          "type": "single_choice",
+          "title": "Ciao! Sono qui per aiutarti a creare un piano di allattamento personalizzato. Per iniziare, qual è il sesso del tuo bambino?",
+          "required": true,
+          "options": [
+            { "id": "female", "text": "Femmina" },
+            { "id": "male", "text": "Maschio" },
+            { "id": "other", "text": "Preferisco non specificare" }
+          ]
+        },
+        {
           "id": "childName",
           "type": "text",
-          "title": "Ciao! Sono qui per aiutarti a creare un piano di allattamento personalizzato. Per iniziare, come si chiama il tuo bambino?",
+          "title": "come si chiama il tuo bambino?",
           "placeholder": "Es: Sofia",
           "required": true
         },
@@ -20,15 +31,10 @@
           "required": true
         },
         {
-          "id": "childSex",
-          "type": "single_choice",
-          "title": "Qual è il sesso di {childName}?",
-          "required": true,
-          "options": [
-            { "id": "female", "text": "Femmina" },
-            { "id": "male", "text": "Maschio" },
-            { "id": "other", "text": "Preferisco non specificare" }
-          ]
+          "id": "childPhoto",
+          "type": "photo",
+          "title": "Vuoi aggiungere una foto di {childName}?",
+          "required": false
         }
       ]
     },

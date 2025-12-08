@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Milkly needs access to your camera to take photos of your baby.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Milkly needs access to your photo library to select photos of your baby.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Milkly needs access to save photos to your library.</string>
 </dict>
 </plist>

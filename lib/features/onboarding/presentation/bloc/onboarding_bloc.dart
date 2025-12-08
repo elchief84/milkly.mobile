@@ -66,6 +66,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
         questionId: currentQuestion.id,
         questionText:
             currentState.currentQuestionTitle, // Use interpolated title
+        questionType: currentQuestion.type, // Add question type
         answer: answer,
         answerText: _getAnswerDisplayText(currentQuestion, answer),
       ),
@@ -173,6 +174,8 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
               return option?.text ?? answerId.toString();
             })
             .join(', ');
+      case QuestionType.photo:
+        return answer.toString().isNotEmpty ? '📷 Foto caricata' : '';
       case QuestionType.text:
       case QuestionType.number:
         return answer.toString();

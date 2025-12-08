@@ -5,7 +5,8 @@ enum QuestionType {
   time,
   number,
   singleChoice,
-  multipleChoice;
+  multipleChoice,
+  photo;
 
   static QuestionType fromString(String value) {
     switch (value) {
@@ -21,6 +22,8 @@ enum QuestionType {
         return QuestionType.singleChoice;
       case 'multiple_choice':
         return QuestionType.multipleChoice;
+      case 'photo':
+        return QuestionType.photo;
       default:
         throw ArgumentError('Unknown question type: $value');
     }
@@ -40,6 +43,8 @@ enum QuestionType {
         return 'single_choice';
       case QuestionType.multipleChoice:
         return 'multiple_choice';
+      case QuestionType.photo:
+        return 'photo';
     }
   }
 }

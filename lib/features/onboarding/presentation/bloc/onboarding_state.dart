@@ -23,12 +23,14 @@ class OnboardingLoading extends OnboardingState {
 class ChatMessage {
   final String questionId;
   final String questionText;
+  final String questionType; // Type of question (text, photo, etc.)
   final dynamic answer;
   final String? answerText;
 
   const ChatMessage({
     required this.questionId,
     required this.questionText,
+    required this.questionType,
     this.answer,
     this.answerText,
   });

@@ -6,6 +6,7 @@ import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/cha
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_option_button.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_input_field.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_confirm_button.dart';
+import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_photo_input.dart';
 
 class ChatQuestionWidget extends StatelessWidget {
   final QuestionModel question;
@@ -37,6 +38,8 @@ class ChatQuestionWidget extends StatelessWidget {
         return _buildSingleChoice(context);
       case QuestionType.multipleChoice:
         return _buildMultipleChoice(context);
+      case QuestionType.photo:
+        return _buildPhotoInput(context);
       case QuestionType.text:
       case QuestionType.number:
       case QuestionType.date:
@@ -107,6 +110,35 @@ class ChatQuestionWidget extends StatelessWidget {
             variant: variant,
           ),
         ],
+      ],
+    );
+  }
+
+  Widget _buildPhotoInput(BuildContext context) {
+    return Column(
+      children: [
+        AssistantMessageBubble(
+          message: _effectiveTitle,
+          showAvatar: true,
+          variant: variant,
+        ),
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: ChatPhotoInput(
+            initialValue: currentAnswer?.toString(),
+            onPhotoSelected: (photoPath) {
+              onAnswerChanged(photoPath);
+              // Auto-confirm when photo is selected
+              if (photoPath.isNotEmpty && onConfirm != null) {
+                Future.delayed(const Duration(milliseconds: 300), () {
+                  onConfirm!();
+                });
+              }
+            },
+            variant: variant,
+          ),
+        ),
       ],
     );
   }
