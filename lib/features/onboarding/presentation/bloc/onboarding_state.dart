@@ -64,12 +64,38 @@ class OnboardingReady extends OnboardingState {
   QuestionModel get currentQuestion =>
       currentStep.questions[currentQuestionIndex];
 
+  /// Get current question title with interpolated variables
+  String get currentQuestionTitle => interpolateText(currentQuestion.title);
+
   bool get isLastQuestionInStep =>
       currentQuestionIndex >= currentStep.questions.length - 1;
 
   bool get isLastStep => currentStepIndex >= questionnaire.steps.length - 1;
 
   bool get isQuestionAnswered => answers.containsKey(currentQuestion.id);
+
+  /// Interpolate variables in a text string
+  /// Replaces {questionId} with the answer value
+  /// Example: "Hello {childName}!" -> "Hello Sofia!"
+  String interpolateText(String text) {
+    var result = text;
+
+    // Find all placeholders in format {questionId}
+    final regex = RegExp(r'\{(\w+)\}');
+    final matches = regex.allMatches(text);
+
+    for (final match in matches) {
+      final questionId = match.group(1);
+      if (questionId != null && answers.containsKey(questionId)) {
+        final value = answers[questionId];
+        if (value != null) {
+          result = result.replaceAll('{$questionId}', value.toString());
+        }
+      }
+    }
+
+    return result;
+  }
 
   /// Check if a question should be shown based on visibility condition
   bool shouldShowQuestion(QuestionModel question) {

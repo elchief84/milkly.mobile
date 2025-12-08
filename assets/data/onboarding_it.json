@@ -96,19 +96,26 @@
       "questions": [
         {
           "id": "dayIntervalHours",
-          "type": "single_choice",
+          "type": "number",
           "title": "Ogni quante ore vuoi allattare di giorno?",
           "placeholder": "Es: 3",
           "required": true,
+          "min": 1,
+          "max": 8,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "hourlyIntervals"
+          }
+        },
+        {
+          "id": "hasDifferentNightInterval",
+          "type": "single_choice",
+          "title": "Di notte preferisci un intervallo diverso?",
+          "required": true,
           "options": [
-            { "id": "val_1", "text": "1 ora" },
-            { "id": "val_2", "text": "2 ore" },
-            { "id": "val_3", "text": "3 ore" },
-            { "id": "val_4", "text": "4 ore" },
-            { "id": "val_5", "text": "5 ore" },
-            { "id": "val_6", "text": "6 ore" },
-            { "id": "val_7", "text": "7 ore" },
-            { "id": "val_8", "text": "8 ore" }
+            { "id": "no", "text": "No, stesso intervallo" },
+            { "id": "yes", "text": "Sì, intervallo diverso" }
           ],
           "visibilityCondition": {
             "questionId": "planningType",
@@ -118,29 +125,16 @@
         },
         {
           "id": "nightIntervalHours",
-          "type": "single_choice",
-          "title": "E di notte, ogni quante ore?",
+          "type": "number",
+          "title": "Ogni quante ore vuoi allattare di notte?",
           "placeholder": "Es: 4",
           "required": true,
-          "options": [
-            { "id": "val_0", "text": "Come di giorno" },
-            { "id": "val_1", "text": "1 ora" },
-            { "id": "val_2", "text": "2 ore" },
-            { "id": "val_3", "text": "3 ore" },
-            { "id": "val_4", "text": "4 ore" },
-            { "id": "val_5", "text": "5 ore" },
-            { "id": "val_6", "text": "6 ore" },
-            { "id": "val_7", "text": "7 ore" },
-            { "id": "val_8", "text": "8 ore" },
-            { "id": "val_9", "text": "9 ore" },
-            { "id": "val_10", "text": "10 ore" },
-            { "id": "val_11", "text": "11 ore" },
-            { "id": "val_12", "text": "12 ore" }
-          ],
+          "min": 1,
+          "max": 12,
           "visibilityCondition": {
-            "questionId": "planningType",
+            "questionId": "hasDifferentNightInterval",
             "operator": "equals",
-            "value": "hourlyIntervals"
+            "value": "yes"
           }
         }
       ]

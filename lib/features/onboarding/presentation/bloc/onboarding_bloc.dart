@@ -64,7 +64,8 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     updatedHistory.add(
       ChatMessage(
         questionId: currentQuestion.id,
-        questionText: currentQuestion.title,
+        questionText:
+            currentState.currentQuestionTitle, // Use interpolated title
         answer: answer,
         answerText: _getAnswerDisplayText(currentQuestion, answer),
       ),

@@ -177,74 +177,72 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                     SliverFillRemaining(
                       hasScrollBody: false,
                       fillOverscroll: true,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 16, 16),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Spacer(),
-                            // Welcome message
-                            AssistantMessageBubble(
-                              message:
-                                  'Welcome! Let\'s set up your personalized feeding plan.',
-                              showAvatar: true,
-                              variant: currentTheme,
-                            ),
-                            const SizedBox(height: 16),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Spacer(),
+                          // Welcome message
+                          AssistantMessageBubble(
+                            message:
+                                'Welcome! Let\'s set up your personalized feeding plan.',
+                            showAvatar: true,
+                            variant: currentTheme,
+                          ),
+                          const SizedBox(height: 16),
 
-                            // Chat history - all previous Q&A
-                            ..._buildChatHistory(context, state, currentTheme),
+                          // Chat history - all previous Q&A
+                          ..._buildChatHistory(context, state, currentTheme),
 
-                            // Current question
-                            ChatQuestionWidget(
-                              question: state.currentQuestion,
-                              currentAnswer:
-                                  state.answers[state.currentQuestion.id],
-                              variant: currentTheme,
-                              onAnswerChanged: (answer) {
-                                context.read<OnboardingBloc>().add(
-                                  AnswerQuestion(
-                                    questionId: state.currentQuestion.id,
-                                    answer: answer,
-                                  ),
+                          // Current question
+                          ChatQuestionWidget(
+                            question: state.currentQuestion,
+                            questionTitle: state.currentQuestionTitle,
+                            currentAnswer:
+                                state.answers[state.currentQuestion.id],
+                            variant: currentTheme,
+                            onAnswerChanged: (answer) {
+                              context.read<OnboardingBloc>().add(
+                                AnswerQuestion(
+                                  questionId: state.currentQuestion.id,
+                                  answer: answer,
+                                ),
+                              );
+
+                              // Change theme if this is the childSex question
+                              if (state.currentQuestion.id == 'childSex') {
+                                context.read<ThemeCubit>().setThemeFromChildSex(
+                                  answer as String,
                                 );
+                              }
 
-                                // Change theme if this is the childSex question
-                                if (state.currentQuestion.id == 'childSex') {
-                                  context
-                                      .read<ThemeCubit>()
-                                      .setThemeFromChildSex(answer as String);
-                                }
-
-                                // Auto-confirm for single choice and input fields
-                                final questionType = QuestionType.fromString(
-                                  state.currentQuestion.type,
+                              // Auto-confirm for single choice and input fields
+                              final questionType = QuestionType.fromString(
+                                state.currentQuestion.type,
+                              );
+                              if (questionType == QuestionType.singleChoice ||
+                                  questionType == QuestionType.text ||
+                                  questionType == QuestionType.number ||
+                                  questionType == QuestionType.date ||
+                                  questionType == QuestionType.time) {
+                                Future.delayed(
+                                  const Duration(milliseconds: 300),
+                                  () {
+                                    if (context.mounted) {
+                                      context.read<OnboardingBloc>().add(
+                                        const ConfirmAnswer(),
+                                      );
+                                    }
+                                  },
                                 );
-                                if (questionType == QuestionType.singleChoice ||
-                                    questionType == QuestionType.text ||
-                                    questionType == QuestionType.number ||
-                                    questionType == QuestionType.date ||
-                                    questionType == QuestionType.time) {
-                                  Future.delayed(
-                                    const Duration(milliseconds: 300),
-                                    () {
-                                      if (context.mounted) {
-                                        context.read<OnboardingBloc>().add(
-                                          const ConfirmAnswer(),
-                                        );
-                                      }
-                                    },
-                                  );
-                                }
-                              },
-                              onConfirm: () {
-                                context.read<OnboardingBloc>().add(
-                                  const ConfirmAnswer(),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+                              }
+                            },
+                            onConfirm: () {
+                              context.read<OnboardingBloc>().add(
+                                const ConfirmAnswer(),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ],

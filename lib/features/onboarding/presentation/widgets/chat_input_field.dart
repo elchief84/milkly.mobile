@@ -57,6 +57,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(vertical: 15),
       color: context.colorScheme.surface,
       child: Row(
         children: [

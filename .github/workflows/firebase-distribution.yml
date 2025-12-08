@@ -32,6 +32,14 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
       
+      - name: Set build number from GitHub run number
+        run: |
+          # Extract current version without build number
+          VERSION=$(grep "version:" pubspec.yaml | sed 's/version: //' | sed 's/+.*//')
+          # Set new version with GitHub run number as build number
+          sed -i "s/version: .*/version: $VERSION+${{ github.run_number }}/" pubspec.yaml
+          echo "Build version: $VERSION+${{ github.run_number }}"
+      
       - name: Build Android APK (Debug with obfuscation)
         run: flutter build apk --debug --obfuscate --split-debug-info=build/app/outputs/symbols
       
@@ -43,6 +51,7 @@ jobs:
           groups: internal-testers
           file: build/app/outputs/flutter-apk/app-debug.apk
           releaseNotes: |
+            Build #${{ github.run_number }}
             Branch: ${{ github.ref_name }}
             Commit: ${{ github.sha }}
             Author: ${{ github.actor }}
@@ -74,6 +83,14 @@ jobs:
   #     - name: Get dependencies
   #       run: flutter pub get
   #     
+  #     - name: Set build number from GitHub run number
+  #       run: |
+  #         # Extract current version without build number
+  #         VERSION=$(grep "version:" pubspec.yaml | sed 's/version: //' | sed 's/+.*//')
+  #         # Set new version with GitHub run number as build number
+  #         sed -i '' "s/version: .*/version: $VERSION+${{ github.run_number }}/" pubspec.yaml
+  #         echo "Build version: $VERSION+${{ github.run_number }}"
+  #     
   #     - name: Build iOS IPA (Debug)
   #       run: |
   #         flutter build ios --debug --no-codesign
@@ -90,6 +107,7 @@ jobs:
   #         groups: internal-testers
   #         file: milkly-debug.ipa
   #         releaseNotes: |
+  #           Build #${{ github.run_number }}
   #           Branch: ${{ github.ref_name }}
   #           Commit: ${{ github.sha }}
   #           Author: ${{ github.actor }}

@@ -9,6 +9,7 @@ import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/cha
 
 class ChatQuestionWidget extends StatelessWidget {
   final QuestionModel question;
+  final String? questionTitle; // Optional interpolated title
   final dynamic currentAnswer;
   final Function(dynamic) onAnswerChanged;
   final VoidCallback? onConfirm;
@@ -17,11 +18,15 @@ class ChatQuestionWidget extends StatelessWidget {
   const ChatQuestionWidget({
     super.key,
     required this.question,
+    this.questionTitle,
     required this.currentAnswer,
     required this.onAnswerChanged,
     this.onConfirm,
     this.variant = ThemeVariant.neutral,
   });
+
+  /// Get the effective title (interpolated if provided, otherwise original)
+  String get _effectiveTitle => questionTitle ?? question.title;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,7 @@ class ChatQuestionWidget extends StatelessWidget {
     return Column(
       children: [
         AssistantMessageBubble(
-          message: question.title,
+          message: _effectiveTitle,
           showAvatar: true,
           variant: variant,
         ),
@@ -70,7 +75,7 @@ class ChatQuestionWidget extends StatelessWidget {
     return Column(
       children: [
         AssistantMessageBubble(
-          message: question.title,
+          message: _effectiveTitle,
           showAvatar: true,
           variant: variant,
         ),
@@ -110,7 +115,7 @@ class ChatQuestionWidget extends StatelessWidget {
     return Column(
       children: [
         AssistantMessageBubble(
-          message: question.title,
+          message: _effectiveTitle,
           showAvatar: true,
           variant: variant,
         ),
@@ -155,46 +160,51 @@ class ChatQuestionWidget extends StatelessWidget {
         );
 
       case QuestionType.date:
-        return InkWell(
-          onTap: () async {
-            final date = await showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime(2020),
-              lastDate: DateTime.now(),
-            );
-            if (date != null) onAnswerChanged(date.toIso8601String());
-          },
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(24),
-              border: Border.all(
-                color: currentAnswer != null
-                    ? AppTheme.getPrimaryColor(variant)
-                    : AppTheme.textHintColor,
-                width: currentAnswer != null ? 2 : 1,
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: InkWell(
+            onTap: () async {
+              final date = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2020),
+                lastDate: DateTime.now(),
+              );
+              if (date != null) onAnswerChanged(date.toIso8601String());
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: AppTheme.getSurfaceColor(variant),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  color: currentAnswer != null
+                      ? AppTheme.getPrimaryColor(variant)
+                      : AppTheme.textHintColor,
+                  width: 2,
+                ),
               ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  currentAnswer != null
-                      ? currentAnswer.toString().split('T')[0]
-                      : 'Seleziona data',
-                  style: TextStyle(
-                    color: currentAnswer != null
-                        ? AppTheme.textDarkPrimary
-                        : AppTheme.textHintColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    currentAnswer != null
+                        ? currentAnswer.toString().split('T')[0]
+                        : 'Seleziona data',
+                    style: TextStyle(
+                      color: currentAnswer != null
+                          ? AppTheme.getPrimaryColor(variant)
+                          : AppTheme.neutralTextHintColor,
+                    ),
                   ),
-                ),
-                const Icon(
-                  Icons.calendar_today,
-                  color: AppTheme.textDarkSecondary,
-                ),
-              ],
+                  Icon(
+                    Icons.calendar_today,
+                    color: currentAnswer != null
+                        ? AppTheme.getPrimaryColor(variant)
+                        : AppTheme.neutralTextHintColor,
+                  ),
+                ],
+              ),
             ),
           ),
         );

@@ -398,4 +398,15 @@ class AppTheme {
     // Future dark theme support
     return lightNeutralTheme;
   }
+
+  static Color? getSurfaceColor(ThemeVariant variant) {
+    switch (variant) {
+      case ThemeVariant.neutral:
+        return neutralSurfaceColor;
+      case ThemeVariant.girl:
+        return girlSurfaceColor;
+      case ThemeVariant.boy:
+        return boySurfaceColor;
+    }
+  }
 }
