@@ -722,7 +722,10 @@ class _BabyInfoCard extends StatelessWidget {
               children: [
                 Text(
                   birthDate.split('T')[0],
-                  style: TextStyle(color: AppTheme.getPrimaryColor(variant)),
+                  style: context.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
                 Icon(Icons.cake, color: AppTheme.getPrimaryColor(variant)),
               ],
@@ -735,11 +738,18 @@ class _BabyInfoCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
+              flex: 3,
               child: Padding(
                 padding: const EdgeInsets.only(right: 5),
                 child: FilledButton(
                   onPressed: () => onSexChanged('male'),
                   style: buttonStyle.copyWith(
+                    textStyle: WidgetStateProperty.all(
+                      const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     backgroundColor: WidgetStateProperty.all(
                       _getSexLabel(sex) == 'Maschio'
                           ? AppTheme.getPrimaryColor(ThemeVariant.boy)
@@ -769,11 +779,18 @@ class _BabyInfoCard extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 3,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: FilledButton(
                   onPressed: () => onSexChanged('female'),
                   style: buttonStyle.copyWith(
+                    textStyle: WidgetStateProperty.all(
+                      const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     backgroundColor: WidgetStateProperty.all(
                       _getSexLabel(sex) == 'Femmina'
                           ? AppTheme.getPrimaryColor(ThemeVariant.girl)
@@ -803,11 +820,18 @@ class _BabyInfoCard extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 2,
               child: Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: FilledButton(
                   onPressed: () => onSexChanged('other'),
                   style: buttonStyle.copyWith(
+                    textStyle: WidgetStateProperty.all(
+                      const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     backgroundColor: WidgetStateProperty.all(
                       _getSexLabel(sex) == 'Altro'
                           ? AppTheme.getPrimaryColor(ThemeVariant.neutral)

@@ -115,6 +115,10 @@ class ChatQuestionWidget extends StatelessWidget {
   }
 
   Widget _buildPhotoInput(BuildContext context) {
+    final hasPhoto =
+        currentAnswer != null && currentAnswer.toString().isNotEmpty;
+    final isRequired = question.required ?? false;
+
     return Column(
       children: [
         AssistantMessageBubble(
@@ -129,16 +133,56 @@ class ChatQuestionWidget extends StatelessWidget {
             initialValue: currentAnswer?.toString(),
             onPhotoSelected: (photoPath) {
               onAnswerChanged(photoPath);
-              // Auto-confirm when photo is selected
-              if (photoPath.isNotEmpty && onConfirm != null) {
-                Future.delayed(const Duration(milliseconds: 300), () {
-                  onConfirm!();
-                });
-              }
+              // Auto-confirm is handled by parent widget
             },
             variant: variant,
           ),
         ),
+        // Show skip button if not required and no photo selected yet
+        if (!isRequired && !hasPhoto && onConfirm != null) ...[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            child: SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () {
+                  // Skip by setting empty value - auto-confirm is handled by parent
+                  onAnswerChanged('');
+                },
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: AppTheme.getPrimaryColor(variant),
+                  side: BorderSide(
+                    color: AppTheme.getPrimaryColor(variant),
+                    width: 2,
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Salta',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: AppTheme.getPrimaryColor(variant),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Icon(
+                      Icons.arrow_forward,
+                      size: 18,
+                      color: AppTheme.getPrimaryColor(variant),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ],
     );
   }

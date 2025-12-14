@@ -58,6 +58,13 @@ class _OnboardingContentState extends State<_OnboardingContent> {
   }
 
   @override
+  initState() {
+    super.initState();
+    // Set default theme to neutral at start
+    context.read<ThemeCubit>().setThemeFromChildSex('other');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorScheme.surface,
