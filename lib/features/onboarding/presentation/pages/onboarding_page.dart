@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -15,15 +17,50 @@ import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/cha
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_question_widget.dart';
 
 /// Onboarding page - guided chatbot flow for initial setup
-class OnboardingPage extends StatelessWidget {
+class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
 
   @override
+  State<OnboardingPage> createState() => _OnboardingPageState();
+}
+
+class _OnboardingPageState extends State<OnboardingPage> {
+  OnboardingBloc? _bloc;
+  String? _localeName;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final localeName = context.l10n.localeName;
+    if (_bloc != null && _localeName == localeName) return;
+
+    final previousBloc = _bloc;
+    if (previousBloc != null) {
+      unawaited(previousBloc.close());
+    }
+
+    _localeName = localeName;
+    _bloc = OnboardingBloc(l10n: context.l10n)..add(const LoadQuestionnaire());
+  }
+
+  @override
+  void dispose() {
+    final bloc = _bloc;
+    if (bloc != null) {
+      unawaited(bloc.close());
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => OnboardingBloc()..add(const LoadQuestionnaire()),
-      child: const _OnboardingContent(),
-    );
+    final bloc = _bloc;
+    if (bloc == null) {
+      return const SizedBox.shrink();
+    }
+
+    return BlocProvider.value(value: bloc, child: const _OnboardingContent());
   }
 }
 
@@ -48,7 +85,7 @@ class _OnboardingContentState extends State<_OnboardingContent> {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (_scrollController.hasClients) {
           _scrollController.animateTo(
-            _scrollController.position.maxScrollExtent,
+            _scrollController.position.minScrollExtent,
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeOut,
           );
@@ -58,7 +95,7 @@ class _OnboardingContentState extends State<_OnboardingContent> {
   }
 
   @override
-  initState() {
+  void initState() {
     super.initState();
     // Set default theme to neutral at start
     context.read<ThemeCubit>().setThemeFromChildSex('other');
@@ -72,7 +109,7 @@ class _OnboardingContentState extends State<_OnboardingContent> {
         backgroundColor: context.colorScheme.surface,
         elevation: 0,
         centerTitle: true,
-        title: const Text('Start your journey'),
+        title: Text(context.l10n.onboardingStartTitle),
       ),
       body: SafeArea(
         child: BlocConsumer<OnboardingBloc, OnboardingState>(
@@ -187,23 +224,9 @@ class _OnboardingContentState extends State<_OnboardingContent> {
           Expanded(
             child: ListView(
               controller: _scrollController,
-              padding: EdgeInsets.only(
-                top: 24,
-                bottom: MediaQuery.of(context).padding.bottom,
-              ),
+              reverse: true,
+              padding: const EdgeInsets.only(top: 24),
               children: [
-                // Welcome message
-                AssistantMessageBubble(
-                  message:
-                      'Welcome! Let\'s set up your personalized feeding plan.',
-                  showAvatar: true,
-                  variant: currentTheme,
-                ),
-                const SizedBox(height: 16),
-
-                // Chat history - all previous Q&A
-                ..._buildChatHistory(context, state, currentTheme),
-
                 // Current question
                 ChatQuestionWidget(
                   question: state.currentQuestion,
@@ -248,6 +271,19 @@ class _OnboardingContentState extends State<_OnboardingContent> {
                     context.read<OnboardingBloc>().add(const ConfirmAnswer());
                   },
                 ),
+                const SizedBox(height: 16),
+
+                // Chat history - all previous Q&A (newest first; ListView is reversed)
+                ..._buildChatHistory(context, state, currentTheme),
+
+                const SizedBox(height: 16),
+
+                // Welcome message (top of the chat)
+                AssistantMessageBubble(
+                  message: context.l10n.onboardingChatWelcomeMessage,
+                  showAvatar: true,
+                  variant: currentTheme,
+                ),
               ],
             ),
           ),
@@ -261,29 +297,32 @@ class _OnboardingContentState extends State<_OnboardingContent> {
     OnboardingReady state,
     ThemeVariant currentTheme,
   ) {
-    return state.chatHistory.expand((message) {
-      return [
-        AssistantMessageBubble(
-          message: message.questionText,
-          showAvatar: true,
-          variant: currentTheme,
-        ),
-        const SizedBox(height: 12),
-        if (message.answerText != null && message.answerText!.isNotEmpty)
-          // Show photo bubble for photo questions, text bubble for others
-          message.questionType == 'photo' &&
-                  message.answer != null &&
-                  message.answer.toString().isNotEmpty
-              ? PhotoMessageBubble(
-                  photoPath: message.answer.toString(),
-                  variant: currentTheme,
-                )
-              : UserMessageBubble(
-                  message: message.answerText!,
-                  variant: currentTheme,
-                ),
-        const SizedBox(height: 16),
-      ];
+    return state.chatHistory.reversed.map((message) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AssistantMessageBubble(
+            message: message.questionText,
+            showAvatar: true,
+            variant: currentTheme,
+          ),
+          const SizedBox(height: 12),
+          if (message.answerText != null && message.answerText!.isNotEmpty)
+            // Show photo bubble for photo questions, text bubble for others
+            message.questionType == 'photo' &&
+                    message.answer != null &&
+                    message.answer.toString().isNotEmpty
+                ? PhotoMessageBubble(
+                    photoPath: message.answer.toString(),
+                    variant: currentTheme,
+                  )
+                : UserMessageBubble(
+                    message: message.answerText!,
+                    variant: currentTheme,
+                  ),
+          const SizedBox(height: 16),
+        ],
+      );
     }).toList();
   }
 

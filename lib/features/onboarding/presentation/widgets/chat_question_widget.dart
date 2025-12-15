@@ -7,6 +7,7 @@ import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/cha
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_input_field.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_confirm_button.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/widgets/chat_photo_input.dart';
+import 'package:smart_breastfeeding/core/utils/l10n_helper.dart';
 
 class ChatQuestionWidget extends StatelessWidget {
   final QuestionModel question;
@@ -164,7 +165,7 @@ class ChatQuestionWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Salta',
+                      context.l10n.commonSkip,
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
@@ -217,7 +218,8 @@ class ChatQuestionWidget extends StatelessWidget {
     switch (questionType) {
       case QuestionType.text:
         return ChatInputField(
-          placeholder: question.placeholder ?? 'Scrivi qui...',
+          placeholder:
+              question.placeholder ?? context.l10n.onboardingTextPlaceholder,
           initialValue: currentAnswer?.toString(),
           onSend: onAnswerChanged,
           variant: variant,
@@ -225,7 +227,8 @@ class ChatQuestionWidget extends StatelessWidget {
 
       case QuestionType.number:
         return ChatInputField(
-          placeholder: question.placeholder ?? 'Inserisci un numero...',
+          placeholder:
+              question.placeholder ?? context.l10n.onboardingNumberPlaceholder,
           keyboardType: TextInputType.number,
           initialValue: currentAnswer?.toString(),
           onSend: (value) {
@@ -266,7 +269,7 @@ class ChatQuestionWidget extends StatelessWidget {
                   Text(
                     currentAnswer != null
                         ? currentAnswer.toString().split('T')[0]
-                        : 'Seleziona data',
+                        : context.l10n.onboardingSelectDate,
                     style: TextStyle(
                       color: currentAnswer != null
                           ? AppTheme.getPrimaryColor(variant)
@@ -318,7 +321,7 @@ class ChatQuestionWidget extends StatelessWidget {
                 Text(
                   currentAnswer != null
                       ? currentAnswer.toString()
-                      : 'Seleziona orario',
+                      : context.l10n.onboardingSelectTime,
                   style: TextStyle(
                     color: currentAnswer != null
                         ? AppTheme.textDarkPrimary

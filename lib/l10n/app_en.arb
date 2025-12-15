@@ -56,6 +56,48 @@
   "@chatbotPlaceholder": {
     "description": "Onboarding chatbot placeholder"
   },
+  "commonCancel": "Cancel",
+  "commonConfirm": "Confirm",
+  "commonSkip": "Skip",
+  "chatAssistantLabel": "Assistant",
+  "chatUserLabel": "You",
+  "onboardingStartTitle": "Start your journey",
+  "onboardingChatWelcomeMessage": "Welcome! Let's set up your personalized feeding plan.",
+  "onboardingPhotoSourceTitle": "Choose source",
+  "onboardingPhotoSourceCamera": "Camera",
+  "onboardingPhotoSourceGallery": "Gallery",
+  "onboardingReviewTitle": "Confirm your plan",
+  "onboardingReviewAnswersTitle": "Answers summary",
+  "onboardingReviewCreatePlanCta": "Confirm and create the plan",
+  "onboardingInputHint": "Enter your answer",
+  "onboardingNumberHint": "Enter a number",
+  "onboardingTextPlaceholder": "Type here...",
+  "onboardingNumberPlaceholder": "Enter a number...",
+  "onboardingSelectDate": "Select date",
+  "onboardingSelectTime": "Select time",
+  "onboardingPhotoLoadError": "Error loading photo: {error}",
+  "@onboardingPhotoLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingPhotoTake": "Take a photo",
+  "onboardingPhotoPick": "Choose from gallery",
+  "onboardingPhotoRemove": "Remove photo",
+  "onboardingPhotoAdd": "Add a photo",
+  "onboardingPhotoHint": "Take or choose from gallery",
+  "onboardingPhotoUploadedLabel": "\ud83d\udcf7 Photo uploaded",
+  "onboardingSexUnspecified": "Unspecified",
+  "onboardingLoadError": "Failed to load questionnaire: {error}",
+  "@onboardingLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
   
     "bfOnboarding_questionnaire_step_childProfile_title": "Baby details",
     "bfOnboarding_questionnaire_step_feedingStatus_title": "Current feeding situation",
@@ -220,4 +262,3 @@
     "bfOnboarding_questionnaire_copySettingsForOtherChild_option_copy": "Copy the settings and then I’ll edit them",
     "bfOnboarding_questionnaire_copySettingsForOtherChild_option_new": "Start from scratch"  
 }
-

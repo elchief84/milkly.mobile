@@ -15,6 +15,49 @@
     "settingsPreferencesPlaceholder": "Impostazioni e preferenze dell'app andranno qui",
     "chatbotPlaceholder": "(Il flusso guidato del chatbot andrà qui)",
   
+    "commonCancel": "Annulla",
+    "commonConfirm": "Conferma",
+    "commonSkip": "Salta",
+    "chatAssistantLabel": "Assistente",
+    "chatUserLabel": "Tu",
+    "onboardingStartTitle": "Inizia il tuo percorso",
+    "onboardingChatWelcomeMessage": "Benvenuta! Configuriamo il tuo piano personalizzato di allattamento.",
+    "onboardingPhotoSourceTitle": "Scegli sorgente",
+    "onboardingPhotoSourceCamera": "Fotocamera",
+    "onboardingPhotoSourceGallery": "Galleria",
+    "onboardingReviewTitle": "Conferma il tuo piano",
+    "onboardingReviewAnswersTitle": "Riepilogo risposte",
+    "onboardingReviewCreatePlanCta": "Conferma e crea il piano",
+    "onboardingInputHint": "Inserisci la risposta",
+    "onboardingNumberHint": "Inserisci un numero",
+    "onboardingTextPlaceholder": "Scrivi qui...",
+    "onboardingNumberPlaceholder": "Inserisci un numero...",
+    "onboardingSelectDate": "Seleziona data",
+    "onboardingSelectTime": "Seleziona orario",
+    "onboardingPhotoLoadError": "Errore nel caricamento della foto: {error}",
+    "@onboardingPhotoLoadError": {
+      "placeholders": {
+        "error": {
+          "type": "String"
+        }
+      }
+    },
+    "onboardingPhotoTake": "Scatta una foto",
+    "onboardingPhotoPick": "Scegli dalla galleria",
+    "onboardingPhotoRemove": "Rimuovi foto",
+    "onboardingPhotoAdd": "Aggiungi una foto",
+    "onboardingPhotoHint": "Scatta o scegli dalla galleria",
+    "onboardingPhotoUploadedLabel": "\ud83d\udcf7 Foto caricata",
+    "onboardingSexUnspecified": "Non specificato",
+    "onboardingLoadError": "Impossibile caricare il questionario: {error}",
+    "@onboardingLoadError": {
+      "placeholders": {
+        "error": {
+          "type": "String"
+        }
+      }
+    },
+  
     "bfOnboarding_questionnaire_step_childProfile_title": "Dati del bambino",
     "bfOnboarding_questionnaire_step_feedingStatus_title": "Situazione attuale di alimentazione",
     "bfOnboarding_questionnaire_step_pediatricPlan_title": "Indicazioni del pediatra",
@@ -178,4 +221,3 @@
     "bfOnboarding_questionnaire_copySettingsForOtherChild_option_copy": "Copia le impostazioni e poi modifico",
     "bfOnboarding_questionnaire_copySettingsForOtherChild_option_new": "Ripartiamo da capo"
 }
-

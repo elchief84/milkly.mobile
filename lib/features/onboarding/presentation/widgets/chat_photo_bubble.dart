@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:smart_breastfeeding/core/theme/app_theme.dart';
+import 'package:smart_breastfeeding/core/utils/l10n_helper.dart';
 
 /// Photo message bubble for chat history
 class PhotoMessageBubble extends StatelessWidget {
@@ -23,9 +24,9 @@ class PhotoMessageBubble extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text(
-              'Tu',
-              style: TextStyle(
+            Text(
+              context.l10n.chatUserLabel,
+              style: const TextStyle(
                 fontSize: 12,
                 color: AppTheme.textDarkSecondary,
                 fontWeight: FontWeight.w500,

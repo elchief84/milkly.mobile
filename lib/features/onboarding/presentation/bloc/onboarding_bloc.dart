@@ -4,12 +4,14 @@ import 'package:smart_breastfeeding/features/onboarding/data/models/questionnair
 import 'package:smart_breastfeeding/features/onboarding/domain/entities/question_type.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/bloc/onboarding_event.dart';
 import 'package:smart_breastfeeding/features/onboarding/presentation/bloc/onboarding_state.dart';
+import 'package:smart_breastfeeding/l10n/app_localizations.dart';
 
 /// Bloc for managing onboarding flow
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   final QuestionnaireDatasource _datasource;
+  final AppLocalizations l10n;
 
-  OnboardingBloc({QuestionnaireDatasource? datasource})
+  OnboardingBloc({required this.l10n, QuestionnaireDatasource? datasource})
     : _datasource = datasource ?? QuestionnaireDatasource(),
       super(const OnboardingInitial()) {
     on<LoadQuestionnaire>(_onLoadQuestionnaire);
@@ -26,8 +28,10 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     emit(const OnboardingLoading());
 
     try {
-      // Load questionnaire with Italian locale (TODO: Get from device locale)
-      final questionnaire = await _datasource.loadQuestionnaire(locale: 'it');
+      // Load questionnaire with the current locale
+      final questionnaire = await _datasource.loadQuestionnaire(
+        locale: l10n.localeName,
+      );
       emit(
         OnboardingReady(
           questionnaire: questionnaire,
@@ -37,7 +41,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
         ),
       );
     } catch (e) {
-      emit(OnboardingError('Failed to load questionnaire: $e'));
+      emit(OnboardingError(l10n.onboardingLoadError(e.toString())));
     }
   }
 
@@ -175,7 +179,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
             })
             .join(', ');
       case QuestionType.photo:
-        return answer.toString().isNotEmpty ? '📷 Foto caricata' : '';
+        return answer.toString().isNotEmpty ? l10n.onboardingPhotoUploadedLabel : '';
       case QuestionType.text:
       case QuestionType.number:
         return answer.toString();

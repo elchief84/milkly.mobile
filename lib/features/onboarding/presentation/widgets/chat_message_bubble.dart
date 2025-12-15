@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_breastfeeding/core/theme/app_theme.dart';
+import 'package:smart_breastfeeding/core/utils/l10n_helper.dart';
 
 class AssistantMessageBubble extends StatelessWidget {
   final String message;
@@ -39,9 +40,9 @@ class AssistantMessageBubble extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (showAvatar) ...[
-                  const Text(
-                    'Assistente',
-                    style: TextStyle(
+                  Text(
+                    context.l10n.chatAssistantLabel,
+                    style: const TextStyle(
                       fontSize: 12,
                       color: AppTheme.textDarkSecondary,
                       fontWeight: FontWeight.w500,
@@ -100,9 +101,9 @@ class UserMessageBubble extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text(
-              'Tu',
-              style: TextStyle(
+            Text(
+              context.l10n.chatUserLabel,
+              style: const TextStyle(
                 fontSize: 12,
                 color: AppTheme.textDarkSecondary,
                 fontWeight: FontWeight.w500,

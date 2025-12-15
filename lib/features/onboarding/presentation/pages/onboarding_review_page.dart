@@ -10,6 +10,7 @@ import 'package:smart_breastfeeding/core/di/injection.dart';
 import 'package:smart_breastfeeding/core/navigation/app_router.dart';
 import 'package:smart_breastfeeding/core/theme/app_theme.dart';
 import 'package:smart_breastfeeding/core/theme/theme_cubit.dart';
+import 'package:smart_breastfeeding/core/utils/l10n_helper.dart';
 import 'package:smart_breastfeeding/core/utils/theme_extensions.dart';
 import 'package:smart_breastfeeding/features/onboarding/data/models/questionnaire_model.dart';
 
@@ -86,12 +87,13 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
 
   Future<void> _updatePhoto() async {
     final variant = context.read<ThemeCubit>().state;
+    final l10n = context.l10n;
 
     // Show dialog to choose camera or gallery
     final source = await showDialog<ImageSource>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Scegli sorgente'),
+        title: Text(l10n.onboardingPhotoSourceTitle),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -100,7 +102,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
                 Icons.camera_alt,
                 color: AppTheme.getPrimaryColor(variant),
               ),
-              title: const Text('Fotocamera'),
+              title: Text(l10n.onboardingPhotoSourceCamera),
               onTap: () => Navigator.pop(context, ImageSource.camera),
             ),
             ListTile(
@@ -108,7 +110,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
                 Icons.photo_library,
                 color: AppTheme.getPrimaryColor(variant),
               ),
-              title: const Text('Galleria'),
+              title: Text(l10n.onboardingPhotoSourceGallery),
               onTap: () => Navigator.pop(context, ImageSource.gallery),
             ),
           ],
@@ -116,7 +118,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annulla'),
+            child: Text(l10n.commonCancel),
           ),
         ],
       ),
@@ -198,6 +200,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
   @override
   Widget build(BuildContext context) {
     final currentTheme = context.watch<ThemeCubit>().state;
+    final l10n = context.l10n;
 
     // Extract baby info
     final childName = _answers['childName'] as String? ?? '';
@@ -213,7 +216,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
         backgroundColor: AppTheme.getThemeForVariant(
           currentTheme,
         ).scaffoldBackgroundColor,
-        title: const Text('Conferma il tuo piano'),
+        title: Text(l10n.onboardingReviewTitle),
         automaticallyImplyLeading: false, // No back button
       ),
       body: SafeArea(
@@ -239,7 +242,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
 
                   // Section title
                   Text(
-                    'Riepilogo risposte',
+                    l10n.onboardingReviewAnswersTitle,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -283,9 +286,12 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
                     ),
                     elevation: 0,
                   ),
-                  child: const Text(
-                    'Conferma e crea il piano',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  child: Text(
+                    l10n.onboardingReviewCreatePlanCta,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
@@ -311,6 +317,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
     dynamic currentAnswer,
     ThemeVariant variant,
   ) async {
+    final l10n = context.l10n;
     String? selectedOption = currentAnswer as String?;
 
     return showDialog<String>(
@@ -340,7 +347,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annulla'),
+            child: Text(l10n.commonCancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(context, selectedOption),
@@ -348,7 +355,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
               backgroundColor: AppTheme.getPrimaryColor(variant),
               foregroundColor: AppTheme.white,
             ),
-            child: const Text('Conferma'),
+            child: Text(l10n.commonConfirm),
           ),
         ],
       ),
@@ -360,6 +367,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
     dynamic currentAnswer,
     ThemeVariant variant,
   ) async {
+    final l10n = context.l10n;
     List<String> selectedOptions = currentAnswer is List
         ? List<String>.from(currentAnswer)
         : [];
@@ -393,7 +401,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annulla'),
+            child: Text(l10n.commonCancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(context, selectedOptions),
@@ -401,7 +409,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
               backgroundColor: AppTheme.getPrimaryColor(variant),
               foregroundColor: AppTheme.white,
             ),
-            child: const Text('Conferma'),
+            child: Text(l10n.commonConfirm),
           ),
         ],
       ),
@@ -413,6 +421,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
     dynamic currentAnswer,
     ThemeVariant variant,
   ) async {
+    final l10n = context.l10n;
     final controller = TextEditingController(
       text: currentAnswer?.toString() ?? '',
     );
@@ -425,7 +434,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
           controller: controller,
           autofocus: true,
           decoration: InputDecoration(
-            hintText: 'Inserisci la risposta',
+            hintText: l10n.onboardingInputHint,
             border: OutlineInputBorder(),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppTheme.getPrimaryColor(variant)),
@@ -435,7 +444,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annulla'),
+            child: Text(l10n.commonCancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(context, controller.text),
@@ -443,7 +452,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
               backgroundColor: AppTheme.getPrimaryColor(variant),
               foregroundColor: AppTheme.white,
             ),
-            child: const Text('Conferma'),
+            child: Text(l10n.commonConfirm),
           ),
         ],
       ),
@@ -455,6 +464,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
     dynamic currentAnswer,
     ThemeVariant variant,
   ) async {
+    final l10n = context.l10n;
     final controller = TextEditingController(
       text: currentAnswer?.toString() ?? '',
     );
@@ -468,7 +478,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
           autofocus: true,
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            hintText: 'Inserisci un numero',
+            hintText: l10n.onboardingNumberHint,
             border: OutlineInputBorder(),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppTheme.getPrimaryColor(variant)),
@@ -478,7 +488,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annulla'),
+            child: Text(l10n.commonCancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(context, controller.text),
@@ -486,7 +496,7 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
               backgroundColor: AppTheme.getPrimaryColor(variant),
               foregroundColor: AppTheme.white,
             ),
-            child: const Text('Conferma'),
+            child: Text(l10n.commonConfirm),
           ),
         ],
       ),
@@ -590,14 +600,15 @@ class _BabyInfoCard extends StatelessWidget {
     required this.onPhotoTap,
   });
 
-  String _getSexLabel(String sex) {
+  String _getSexLabel(BuildContext context, String sex) {
+    final l10n = context.l10n;
     switch (sex) {
       case 'female':
-        return 'Femmina';
+        return l10n.bfOnboarding_questionnaire_childSex_option_female;
       case 'male':
-        return 'Maschio';
+        return l10n.bfOnboarding_questionnaire_childSex_option_male;
       case 'other':
-        return 'Non specificato';
+        return l10n.onboardingSexUnspecified;
       default:
         return sex;
     }
@@ -753,14 +764,14 @@ class _BabyInfoCard extends StatelessWidget {
                       ),
                     ),
                     backgroundColor: WidgetStateProperty.all(
-                      _getSexLabel(sex) == 'Maschio'
+                      sex == 'male'
                           ? AppTheme.getPrimaryColor(ThemeVariant.boy)
                           : AppTheme.getPrimaryLightColor(
                               ThemeVariant.boy,
                             ).withValues(alpha: 0.3),
                     ),
                     foregroundColor: WidgetStateProperty.all(
-                      _getSexLabel(sex) == 'Maschio'
+                      sex == 'male'
                           ? AppTheme.white
                           : AppTheme.getPrimaryColor(ThemeVariant.boy),
                     ),
@@ -770,11 +781,11 @@ class _BabyInfoCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.male,
-                        color: _getSexLabel(sex) == 'Maschio'
+                        color: sex == 'male'
                             ? AppTheme.white
                             : AppTheme.getPrimaryColor(ThemeVariant.boy),
                       ),
-                      Text('Maschio'),
+                      Text(_getSexLabel(context, 'male')),
                     ],
                   ),
                 ),
@@ -794,14 +805,14 @@ class _BabyInfoCard extends StatelessWidget {
                       ),
                     ),
                     backgroundColor: WidgetStateProperty.all(
-                      _getSexLabel(sex) == 'Femmina'
+                      sex == 'female'
                           ? AppTheme.getPrimaryColor(ThemeVariant.girl)
                           : AppTheme.getPrimaryLightColor(
                               ThemeVariant.girl,
                             ).withValues(alpha: 0.3),
                     ),
                     foregroundColor: WidgetStateProperty.all(
-                      _getSexLabel(sex) == 'Femmina'
+                      sex == 'female'
                           ? AppTheme.white
                           : AppTheme.getPrimaryColor(ThemeVariant.girl),
                     ),
@@ -811,11 +822,11 @@ class _BabyInfoCard extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.female,
-                        color: _getSexLabel(sex) == 'Femmina'
+                        color: sex == 'female'
                             ? AppTheme.white
                             : AppTheme.getPrimaryColor(ThemeVariant.girl),
                       ),
-                      Text('Femmina'),
+                      Text(_getSexLabel(context, 'female')),
                     ],
                   ),
                 ),
@@ -835,19 +846,19 @@ class _BabyInfoCard extends StatelessWidget {
                       ),
                     ),
                     backgroundColor: WidgetStateProperty.all(
-                      _getSexLabel(sex) == 'Altro'
+                      sex == 'other'
                           ? AppTheme.getPrimaryColor(ThemeVariant.neutral)
                           : AppTheme.getPrimaryLightColor(
                               ThemeVariant.neutral,
                             ).withValues(alpha: 0.3),
                     ),
                     foregroundColor: WidgetStateProperty.all(
-                      _getSexLabel(sex) == 'Altro'
+                      sex == 'other'
                           ? AppTheme.white
                           : AppTheme.getPrimaryColor(ThemeVariant.neutral),
                     ),
                   ),
-                  child: Text('Altro'),
+                  child: Text(_getSexLabel(context, 'other')),
                 ),
               ),
             ),
@@ -955,7 +966,8 @@ class _AnswerItem extends StatelessWidget {
     return _formatQuestionId(questionId);
   }
 
-  String _getDisplayAnswer() {
+  String _getDisplayAnswer(BuildContext context) {
+    final l10n = context.l10n;
     if (answer == null) return '';
 
     final type = questionType ?? '';
@@ -993,7 +1005,7 @@ class _AnswerItem extends StatelessWidget {
         return answer.toString().split('T')[0];
 
       case 'photo':
-        return '📷 Foto caricata';
+        return l10n.onboardingPhotoUploadedLabel;
 
       default:
         return answer.toString();
@@ -1018,7 +1030,7 @@ class _AnswerItem extends StatelessWidget {
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 8),
           child: Text(
-            _getDisplayAnswer(),
+            _getDisplayAnswer(context),
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),

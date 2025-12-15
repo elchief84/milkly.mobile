@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_breastfeeding/core/theme/app_theme.dart';
+import 'package:smart_breastfeeding/core/utils/l10n_helper.dart';
 
 class ChatConfirmButton extends StatelessWidget {
   final VoidCallback onConfirm;
@@ -34,9 +35,12 @@ class ChatConfirmButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Conferma',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+              Text(
+                context.l10n.commonConfirm,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               const SizedBox(width: 8),
               Icon(

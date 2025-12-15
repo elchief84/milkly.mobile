@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_breastfeeding/core/theme/app_theme.dart';
+import 'package:smart_breastfeeding/core/utils/l10n_helper.dart';
 
 class ChatPhotoInput extends StatefulWidget {
   final String? initialValue; // Path to existing photo
@@ -50,7 +51,9 @@ class _ChatPhotoInputState extends State<ChatPhotoInput> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Errore nel caricamento della foto: $e'),
+            content: Text(
+              context.l10n.onboardingPhotoLoadError(e.toString()),
+            ),
             backgroundColor: AppTheme.errorColor,
           ),
         );
@@ -77,7 +80,7 @@ class _ChatPhotoInputState extends State<ChatPhotoInput> {
                     Icons.photo_camera,
                     color: AppTheme.getPrimaryColor(widget.variant),
                   ),
-                  title: const Text('Scatta una foto'),
+                  title: Text(context.l10n.onboardingPhotoTake),
                   onTap: () {
                     Navigator.pop(context);
                     _pickImage(ImageSource.camera);
@@ -88,7 +91,7 @@ class _ChatPhotoInputState extends State<ChatPhotoInput> {
                     Icons.photo_library,
                     color: AppTheme.getPrimaryColor(widget.variant),
                   ),
-                  title: const Text('Scegli dalla galleria'),
+                  title: Text(context.l10n.onboardingPhotoPick),
                   onTap: () {
                     Navigator.pop(context);
                     _pickImage(ImageSource.gallery);
@@ -100,7 +103,7 @@ class _ChatPhotoInputState extends State<ChatPhotoInput> {
                       Icons.delete,
                       color: AppTheme.errorColor,
                     ),
-                    title: const Text('Rimuovi foto'),
+                    title: Text(context.l10n.onboardingPhotoRemove),
                     onTap: () {
                       Navigator.pop(context);
                       setState(() {
@@ -175,7 +178,7 @@ class _ChatPhotoInputState extends State<ChatPhotoInput> {
                         ),
                         const SizedBox(height: 12),
                         Text(
-                          'Aggiungi una foto',
+                          context.l10n.onboardingPhotoAdd,
                           style: TextStyle(
                             fontSize: 16,
                             color: AppTheme.getPrimaryColor(widget.variant),
@@ -184,7 +187,7 @@ class _ChatPhotoInputState extends State<ChatPhotoInput> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Scatta o scegli dalla galleria',
+                          context.l10n.onboardingPhotoHint,
                           style: TextStyle(
                             fontSize: 14,
                             color: AppTheme.neutralTextHintColor,

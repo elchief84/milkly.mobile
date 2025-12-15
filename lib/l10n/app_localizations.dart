@@ -182,6 +182,174 @@ abstract class AppLocalizations {
   /// **'(Guided chatbot flow will go here)'**
   String get chatbotPlaceholder;
 
+  /// No description provided for @commonCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get commonCancel;
+
+  /// No description provided for @commonConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get commonConfirm;
+
+  /// No description provided for @commonSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get commonSkip;
+
+  /// No description provided for @chatAssistantLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Assistant'**
+  String get chatAssistantLabel;
+
+  /// No description provided for @chatUserLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get chatUserLabel;
+
+  /// No description provided for @onboardingStartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start your journey'**
+  String get onboardingStartTitle;
+
+  /// No description provided for @onboardingChatWelcomeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome! Let\'s set up your personalized feeding plan.'**
+  String get onboardingChatWelcomeMessage;
+
+  /// No description provided for @onboardingPhotoSourceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose source'**
+  String get onboardingPhotoSourceTitle;
+
+  /// No description provided for @onboardingPhotoSourceCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get onboardingPhotoSourceCamera;
+
+  /// No description provided for @onboardingPhotoSourceGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get onboardingPhotoSourceGallery;
+
+  /// No description provided for @onboardingReviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your plan'**
+  String get onboardingReviewTitle;
+
+  /// No description provided for @onboardingReviewAnswersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers summary'**
+  String get onboardingReviewAnswersTitle;
+
+  /// No description provided for @onboardingReviewCreatePlanCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm and create the plan'**
+  String get onboardingReviewCreatePlanCta;
+
+  /// No description provided for @onboardingInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your answer'**
+  String get onboardingInputHint;
+
+  /// No description provided for @onboardingNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number'**
+  String get onboardingNumberHint;
+
+  /// No description provided for @onboardingTextPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Type here...'**
+  String get onboardingTextPlaceholder;
+
+  /// No description provided for @onboardingNumberPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number...'**
+  String get onboardingNumberPlaceholder;
+
+  /// No description provided for @onboardingSelectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select date'**
+  String get onboardingSelectDate;
+
+  /// No description provided for @onboardingSelectTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select time'**
+  String get onboardingSelectTime;
+
+  /// No description provided for @onboardingPhotoLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading photo: {error}'**
+  String onboardingPhotoLoadError(String error);
+
+  /// No description provided for @onboardingPhotoTake.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a photo'**
+  String get onboardingPhotoTake;
+
+  /// No description provided for @onboardingPhotoPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get onboardingPhotoPick;
+
+  /// No description provided for @onboardingPhotoRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove photo'**
+  String get onboardingPhotoRemove;
+
+  /// No description provided for @onboardingPhotoAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a photo'**
+  String get onboardingPhotoAdd;
+
+  /// No description provided for @onboardingPhotoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Take or choose from gallery'**
+  String get onboardingPhotoHint;
+
+  /// No description provided for @onboardingPhotoUploadedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'📷 Photo uploaded'**
+  String get onboardingPhotoUploadedLabel;
+
+  /// No description provided for @onboardingSexUnspecified.
+  ///
+  /// In en, this message translates to:
+  /// **'Unspecified'**
+  String get onboardingSexUnspecified;
+
+  /// No description provided for @onboardingLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load questionnaire: {error}'**
+  String onboardingLoadError(String error);
+
   /// No description provided for @bfOnboarding_questionnaire_step_childProfile_title.
   ///
   /// In en, this message translates to:

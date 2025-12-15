@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "flowId": "breastfeeding_onboarding_v1",
+  "steps": [
+    {
+      "id": "babyProfile",
+      "title": "Baby profile",
+      "questions": [
+        {
+          "id": "childSex",
+          "type": "single_choice",
+          "title": "Hi! I'm here to help you create a personalized breastfeeding plan. To start, what is your baby's sex?",
+          "required": true,
+          "options": [
+            { "id": "female", "text": "Female" },
+            { "id": "male", "text": "Male" },
+            { "id": "other", "text": "Prefer not to say" }
+          ]
+        },
+        {
+          "id": "childName",
+          "type": "text",
+          "title": "What's your baby's name?",
+          "placeholder": "e.g., Sofia",
+          "required": true
+        },
+        {
+          "id": "childBirthDate",
+          "type": "date",
+          "title": "What is {childName}'s date of birth?",
+          "required": true
+        },
+        {
+          "id": "childPhoto",
+          "type": "photo",
+          "title": "Would you like to add a photo of {childName}?",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "feedingType",
+      "title": "Feeding type",
+      "questions": [
+        {
+          "id": "feedingMode",
+          "type": "single_choice",
+          "title": "Which type of milk will you mainly use?",
+          "required": true,
+          "options": [
+            { "id": "breastOnly", "text": "Breastfeeding only" },
+            {
+              "id": "breastAndPumpedBottle",
+              "text": "Breast + expressed breast milk in a bottle"
+            },
+            { "id": "breastAndFormula", "text": "Breast + formula in a bottle" },
+            {
+              "id": "pumpedAndFormula",
+              "text": "Expressed breast milk + formula in a bottle"
+            },
+            { "id": "formulaOnly", "text": "Formula only (bottle)" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "breastManagement",
+      "title": "Breast management",
+      "questions": [
+        {
+          "id": "breastPerFeed",
+          "type": "single_choice",
+          "title": "During a feed, you prefer to give:",
+          "required": true,
+          "options": [
+            { "id": "singleBreast", "text": "One breast per feed" },
+            { "id": "bothBreasts", "text": "Both breasts in the same feed" },
+            { "id": "varies", "text": "It varies, depends on the situation" }
+          ],
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastOnly", "breastAndPumpedBottle", "breastAndFormula"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "planningMode",
+      "title": "Planning mode",
+      "questions": [
+        {
+          "id": "planningType",
+          "type": "single_choice",
+          "title": "How do you prefer to plan feeds?",
+          "required": true,
+          "options": [
+            {
+              "id": "hourlyIntervals",
+              "text": "By hourly intervals (every X hours)"
+            },
+            { "id": "dailyCount", "text": "By number of feeds per day" },
+            { "id": "onDemand", "text": "On demand (no strict schedule)" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hourlyIntervals",
+      "title": "Hourly intervals",
+      "questions": [
+        {
+          "id": "dayIntervalHours",
+          "type": "number",
+          "title": "How many hours between feeds during the day?",
+          "placeholder": "e.g., 3",
+          "required": true,
+          "min": 1,
+          "max": 8,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "hourlyIntervals"
+          }
+        },
+        {
+          "id": "hasDifferentNightInterval",
+          "type": "single_choice",
+          "title": "At night, do you prefer a different interval?",
+          "required": true,
+          "options": [
+            { "id": "no", "text": "No, same interval" },
+            { "id": "yes", "text": "Yes, different interval" }
+          ],
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "hourlyIntervals"
+          }
+        },
+        {
+          "id": "nightIntervalHours",
+          "type": "number",
+          "title": "How many hours between feeds at night?",
+          "placeholder": "e.g., 4",
+          "required": true,
+          "min": 1,
+          "max": 12,
+          "visibilityCondition": {
+            "questionId": "hasDifferentNightInterval",
+            "operator": "equals",
+            "value": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dailyCount",
+      "title": "Daily feed count",
+      "questions": [
+        {
+          "id": "totalDailyFeeds",
+          "type": "number",
+          "title": "How many feeds do you want in 24 hours?",
+          "placeholder": "e.g., 8",
+          "required": true,
+          "min": 1,
+          "max": 20,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "dailyCount"
+          }
+        },
+        {
+          "id": "firstFeedOfDay",
+          "type": "time",
+          "title": "What time do you want the first feed of the day?",
+          "placeholder": "e.g., 8:00",
+          "required": true,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "equals",
+            "value": "dailyCount"
+          }
+        }
+      ]
+    },
+    {
+      "id": "maxIntervalsWithoutFeeding",
+      "title": "Maximum intervals",
+      "questions": [
+        {
+          "id": "maxDayHoursWithoutFeed",
+          "type": "number",
+          "title": "Maximum number of hours without a feed during the day?",
+          "placeholder": "e.g., 3",
+          "required": false,
+          "min": 1,
+          "max": 8,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "in",
+            "value": ["hourlyIntervals", "dailyCount"]
+          }
+        },
+        {
+          "id": "maxNightHoursWithoutFeed",
+          "type": "number",
+          "title": "And at night, maximum number of hours without a feed?",
+          "placeholder": "e.g., 5",
+          "required": false,
+          "min": 1,
+          "max": 12,
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "in",
+            "value": ["hourlyIntervals", "dailyCount"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pumpingSchedule",
+      "title": "Pumping schedule",
+      "questions": [
+        {
+          "id": "pumpingDayIntervalHours",
+          "type": "number",
+          "title": "How many hours between pumping sessions during the day?",
+          "placeholder": "e.g., 3",
+          "required": true,
+          "min": 1,
+          "max": 8,
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastAndPumpedBottle", "pumpedAndFormula"]
+          }
+        },
+        {
+          "id": "pumpingNightIntervalHours",
+          "type": "number",
+          "title": "And at night, how often do you want to pump?",
+          "placeholder": "e.g., 6 (or leave blank if you don't pump at night)",
+          "required": false,
+          "min": 1,
+          "max": 12,
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastAndPumpedBottle", "pumpedAndFormula"]
+          }
+        },
+        {
+          "id": "pumpingReminders",
+          "type": "single_choice",
+          "title": "Do you want pumping reminders?",
+          "required": true,
+          "options": [
+            { "id": "yes", "text": "Yes, remind me when it's time to pump" },
+            { "id": "no", "text": "No, I'll do it when I can" }
+          ],
+          "visibilityCondition": {
+            "questionId": "feedingMode",
+            "operator": "in",
+            "value": ["breastAndPumpedBottle", "pumpedAndFormula"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "trackingPreferences",
+      "title": "Tracking preferences",
+      "questions": [
+        {
+          "id": "feedingReminders",
+          "type": "single_choice",
+          "title": "Do you want feeding reminders?",
+          "required": true,
+          "options": [
+            { "id": "yes", "text": "Yes, remind me when it's time to feed" },
+            {
+              "id": "onlyIfExceeds",
+              "text": "Only if I exceed the maximum interval"
+            },
+            { "id": "no", "text": "No, I prefer to see only the history" }
+          ],
+          "visibilityCondition": {
+            "questionId": "planningType",
+            "operator": "in",
+            "value": ["hourlyIntervals", "dailyCount"]
+          }
+        }
+      ]
+    }
+  ]
+}
+

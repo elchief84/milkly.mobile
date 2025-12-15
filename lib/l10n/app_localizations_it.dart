@@ -56,6 +56,95 @@ class AppLocalizationsIt extends AppLocalizations {
   String get chatbotPlaceholder => '(Il flusso guidato del chatbot andrà qui)';
 
   @override
+  String get commonCancel => 'Annulla';
+
+  @override
+  String get commonConfirm => 'Conferma';
+
+  @override
+  String get commonSkip => 'Salta';
+
+  @override
+  String get chatAssistantLabel => 'Assistente';
+
+  @override
+  String get chatUserLabel => 'Tu';
+
+  @override
+  String get onboardingStartTitle => 'Inizia il tuo percorso';
+
+  @override
+  String get onboardingChatWelcomeMessage =>
+      'Benvenuta! Configuriamo il tuo piano personalizzato di allattamento.';
+
+  @override
+  String get onboardingPhotoSourceTitle => 'Scegli sorgente';
+
+  @override
+  String get onboardingPhotoSourceCamera => 'Fotocamera';
+
+  @override
+  String get onboardingPhotoSourceGallery => 'Galleria';
+
+  @override
+  String get onboardingReviewTitle => 'Conferma il tuo piano';
+
+  @override
+  String get onboardingReviewAnswersTitle => 'Riepilogo risposte';
+
+  @override
+  String get onboardingReviewCreatePlanCta => 'Conferma e crea il piano';
+
+  @override
+  String get onboardingInputHint => 'Inserisci la risposta';
+
+  @override
+  String get onboardingNumberHint => 'Inserisci un numero';
+
+  @override
+  String get onboardingTextPlaceholder => 'Scrivi qui...';
+
+  @override
+  String get onboardingNumberPlaceholder => 'Inserisci un numero...';
+
+  @override
+  String get onboardingSelectDate => 'Seleziona data';
+
+  @override
+  String get onboardingSelectTime => 'Seleziona orario';
+
+  @override
+  String onboardingPhotoLoadError(String error) {
+    return 'Errore nel caricamento della foto: $error';
+  }
+
+  @override
+  String get onboardingPhotoTake => 'Scatta una foto';
+
+  @override
+  String get onboardingPhotoPick => 'Scegli dalla galleria';
+
+  @override
+  String get onboardingPhotoRemove => 'Rimuovi foto';
+
+  @override
+  String get onboardingPhotoAdd => 'Aggiungi una foto';
+
+  @override
+  String get onboardingPhotoHint => 'Scatta o scegli dalla galleria';
+
+  @override
+  String get onboardingPhotoUploadedLabel => '📷 Foto caricata';
+
+  @override
+  String get onboardingSexUnspecified => 'Non specificato';
+
+  @override
+  String onboardingLoadError(String error) {
+    return 'Impossibile caricare il questionario: $error';
+  }
+
+  @override
   String get bfOnboarding_questionnaire_step_childProfile_title =>
       'Dati del bambino';
 

@@ -54,6 +54,95 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chatbotPlaceholder => '(Guided chatbot flow will go here)';
 
   @override
+  String get commonCancel => 'Cancel';
+
+  @override
+  String get commonConfirm => 'Confirm';
+
+  @override
+  String get commonSkip => 'Skip';
+
+  @override
+  String get chatAssistantLabel => 'Assistant';
+
+  @override
+  String get chatUserLabel => 'You';
+
+  @override
+  String get onboardingStartTitle => 'Start your journey';
+
+  @override
+  String get onboardingChatWelcomeMessage =>
+      'Welcome! Let\'s set up your personalized feeding plan.';
+
+  @override
+  String get onboardingPhotoSourceTitle => 'Choose source';
+
+  @override
+  String get onboardingPhotoSourceCamera => 'Camera';
+
+  @override
+  String get onboardingPhotoSourceGallery => 'Gallery';
+
+  @override
+  String get onboardingReviewTitle => 'Confirm your plan';
+
+  @override
+  String get onboardingReviewAnswersTitle => 'Answers summary';
+
+  @override
+  String get onboardingReviewCreatePlanCta => 'Confirm and create the plan';
+
+  @override
+  String get onboardingInputHint => 'Enter your answer';
+
+  @override
+  String get onboardingNumberHint => 'Enter a number';
+
+  @override
+  String get onboardingTextPlaceholder => 'Type here...';
+
+  @override
+  String get onboardingNumberPlaceholder => 'Enter a number...';
+
+  @override
+  String get onboardingSelectDate => 'Select date';
+
+  @override
+  String get onboardingSelectTime => 'Select time';
+
+  @override
+  String onboardingPhotoLoadError(String error) {
+    return 'Error loading photo: $error';
+  }
+
+  @override
+  String get onboardingPhotoTake => 'Take a photo';
+
+  @override
+  String get onboardingPhotoPick => 'Choose from gallery';
+
+  @override
+  String get onboardingPhotoRemove => 'Remove photo';
+
+  @override
+  String get onboardingPhotoAdd => 'Add a photo';
+
+  @override
+  String get onboardingPhotoHint => 'Take or choose from gallery';
+
+  @override
+  String get onboardingPhotoUploadedLabel => '📷 Photo uploaded';
+
+  @override
+  String get onboardingSexUnspecified => 'Unspecified';
+
+  @override
+  String onboardingLoadError(String error) {
+    return 'Failed to load questionnaire: $error';
+  }
+
+  @override
   String get bfOnboarding_questionnaire_step_childProfile_title =>
       'Baby details';
 
