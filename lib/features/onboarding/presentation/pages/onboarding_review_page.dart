@@ -318,21 +318,23 @@ class _OnboardingReviewPageState extends State<OnboardingReviewPage> {
       builder: (context) => AlertDialog(
         title: Text(question.title),
         content: StatefulBuilder(
-          builder: (context, setState) => Column(
-            mainAxisSize: MainAxisSize.min,
-            children: (question.options ?? []).map((option) {
-              return RadioListTile<String>(
-                title: Text(option.text),
-                value: option.id,
-                groupValue: selectedOption,
-                activeColor: AppTheme.getPrimaryColor(variant),
-                onChanged: (value) {
-                  setState(() {
-                    selectedOption = value;
-                  });
-                },
-              );
-            }).toList(),
+          builder: (context, setState) => RadioGroup<String>(
+            groupValue: selectedOption,
+            onChanged: (value) {
+              setState(() {
+                selectedOption = value;
+              });
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: (question.options ?? []).map((option) {
+                return RadioListTile<String>(
+                  title: Text(option.text),
+                  value: option.id,
+                  activeColor: AppTheme.getPrimaryColor(variant),
+                );
+              }).toList(),
+            ),
           ),
         ),
         actions: [

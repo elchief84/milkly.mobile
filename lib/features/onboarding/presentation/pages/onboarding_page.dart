@@ -185,86 +185,70 @@ class _OnboardingContentState extends State<_OnboardingContent> {
         children: [
           _buildProgressBar(context, state),
           Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return CustomScrollView(
-                  controller: _scrollController,
-                  slivers: [
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      fillOverscroll: true,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Spacer(),
-                          // Welcome message
-                          AssistantMessageBubble(
-                            message:
-                                'Welcome! Let\'s set up your personalized feeding plan.',
-                            showAvatar: true,
-                            variant: currentTheme,
-                          ),
-                          const SizedBox(height: 16),
+            child: ListView(
+              controller: _scrollController,
+              padding: EdgeInsets.only(
+                top: 24,
+                bottom: MediaQuery.of(context).padding.bottom,
+              ),
+              children: [
+                // Welcome message
+                AssistantMessageBubble(
+                  message:
+                      'Welcome! Let\'s set up your personalized feeding plan.',
+                  showAvatar: true,
+                  variant: currentTheme,
+                ),
+                const SizedBox(height: 16),
 
-                          // Chat history - all previous Q&A
-                          ..._buildChatHistory(context, state, currentTheme),
+                // Chat history - all previous Q&A
+                ..._buildChatHistory(context, state, currentTheme),
 
-                          // Current question
-                          ChatQuestionWidget(
-                            question: state.currentQuestion,
-                            questionTitle: state.currentQuestionTitle,
-                            currentAnswer:
-                                state.answers[state.currentQuestion.id],
-                            variant: currentTheme,
-                            onAnswerChanged: (answer) {
-                              context.read<OnboardingBloc>().add(
-                                AnswerQuestion(
-                                  questionId: state.currentQuestion.id,
-                                  answer: answer,
-                                ),
-                              );
-
-                              // Change theme if this is the childSex question
-                              if (state.currentQuestion.id == 'childSex') {
-                                context.read<ThemeCubit>().setThemeFromChildSex(
-                                  answer as String,
-                                );
-                              }
-
-                              // Auto-confirm for single choice, photo and input fields
-                              final questionType = QuestionType.fromString(
-                                state.currentQuestion.type,
-                              );
-                              if (questionType == QuestionType.singleChoice ||
-                                  questionType == QuestionType.photo ||
-                                  questionType == QuestionType.text ||
-                                  questionType == QuestionType.number ||
-                                  questionType == QuestionType.date ||
-                                  questionType == QuestionType.time) {
-                                Future.delayed(
-                                  const Duration(milliseconds: 300),
-                                  () {
-                                    if (context.mounted) {
-                                      context.read<OnboardingBloc>().add(
-                                        const ConfirmAnswer(),
-                                      );
-                                    }
-                                  },
-                                );
-                              }
-                            },
-                            onConfirm: () {
-                              context.read<OnboardingBloc>().add(
-                                const ConfirmAnswer(),
-                              );
-                            },
-                          ),
-                        ],
+                // Current question
+                ChatQuestionWidget(
+                  question: state.currentQuestion,
+                  questionTitle: state.currentQuestionTitle,
+                  currentAnswer: state.answers[state.currentQuestion.id],
+                  variant: currentTheme,
+                  onAnswerChanged: (answer) {
+                    context.read<OnboardingBloc>().add(
+                      AnswerQuestion(
+                        questionId: state.currentQuestion.id,
+                        answer: answer,
                       ),
-                    ),
-                  ],
-                );
-              },
+                    );
+
+                    // Change theme if this is the childSex question
+                    if (state.currentQuestion.id == 'childSex') {
+                      context.read<ThemeCubit>().setThemeFromChildSex(
+                        answer as String,
+                      );
+                    }
+
+                    // Auto-confirm for single choice, photo and input fields
+                    final questionType = QuestionType.fromString(
+                      state.currentQuestion.type,
+                    );
+                    if (questionType == QuestionType.singleChoice ||
+                        questionType == QuestionType.photo ||
+                        questionType == QuestionType.text ||
+                        questionType == QuestionType.number ||
+                        questionType == QuestionType.date ||
+                        questionType == QuestionType.time) {
+                      Future.delayed(const Duration(milliseconds: 300), () {
+                        if (context.mounted) {
+                          context.read<OnboardingBloc>().add(
+                            const ConfirmAnswer(),
+                          );
+                        }
+                      });
+                    }
+                  },
+                  onConfirm: () {
+                    context.read<OnboardingBloc>().add(const ConfirmAnswer());
+                  },
+                ),
+              ],
             ),
           ),
         ],

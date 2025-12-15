@@ -117,7 +117,7 @@ class ChatQuestionWidget extends StatelessWidget {
   Widget _buildPhotoInput(BuildContext context) {
     final hasPhoto =
         currentAnswer != null && currentAnswer.toString().isNotEmpty;
-    final isRequired = question.required ?? false;
+    final isRequired = question.required;
 
     return Column(
       children: [
